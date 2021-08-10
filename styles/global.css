@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#nprogress .bar {
+  background: #000 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #000, 0 0 5px #000;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #000;
+  border-left-color: #000;
+}
+
+.dot {
+  box-shadow: none !important;
+  background: gray !important;
+}
+
+.dot:hover {
+  background: black !important;
+}
+
+.selected {
+  background: black !important;
+}
