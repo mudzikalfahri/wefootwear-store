@@ -2,8 +2,8 @@ import React from "react";
 
 function Header() {
   return (
-    <nav>
-      <div className="navtop flex justify-between place-items-center py-1.5">
+    <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 px-2 md:px-0">
+      <div className=" navtop max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
         <div className="burger flex items-center">
           <svg
             className="w-7 h-7 text-cusblack"
@@ -22,7 +22,7 @@ function Header() {
           </h3>
         </div>
         <div className="profile flex items-center place-items-center">
-          <div className="w-8 flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 cursor-pointer duration-200">
+          <div className="w-8 flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
             <svg
               className="w-6 h-6 text-cusblack m-auto"
               fill="none"
@@ -38,7 +38,7 @@ function Header() {
               />
             </svg>
           </div>
-          <div className="w-8 flex items-center h-8 mr-2 rounded-full hover:bg-gray-200 cursor-pointer duration-200">
+          <div className="w-8 flex items-center h-8 mr-2 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
             <svg
               className="w-6 m-auto h-6 text-cusblack"
               fill="none"
@@ -63,7 +63,7 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className="navbot flex place-items-center py-2">
+      {/* <div className="navbot overflow-x-auto max-w-6xl mx-auto flex place-items-center py-2">
         <div className="category flex place-items-center">
           <div className="py-2.5 px-6 rounded-3xl bg-cusblack text-xs text-white mr-3 shadow-xl">
             All Items
@@ -103,7 +103,7 @@ function Header() {
             />
           </svg>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 }
