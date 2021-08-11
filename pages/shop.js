@@ -1,6 +1,7 @@
 import Header from "../components/header";
 import TopCategory from "../components/topcategory";
 import ShopCarousel from "../components/shopcarousel";
+import ProductCard from "../components/productcard";
 
 function Shop() {
   return (
@@ -9,7 +10,7 @@ function Shop() {
       <div className="max-w-6xl mx-auto pt-14 px-2 md:px-0">
         <TopCategory />
         <div className="grid grid-cols-4 gap-x-6">
-          <div className="md:inline hidden border border-black p-4">
+          <div className="md:inline hidden p-4">
             <div className="bg-white rounded-3xl px-5 py-6 shadow-lg">
               <h3 className="font-semibold mb-3 text-lg text-cusblack">
                 Categories
@@ -25,9 +26,20 @@ function Shop() {
               </ul>
             </div>
           </div>
-          <div className="col-span-4 md:col-span-3 border border-black flex flex-col py-4">
+          <div className="col-span-4 md:col-span-3 flex flex-col py-4">
             <ShopCarousel />
-            <div className=""></div>
+            <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 p-5">
+              <div className="grid grid-cols-4 gap-x-4 gap-y-6">
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+              </div>
+            </div>
           </div>
         </div>
       </div>

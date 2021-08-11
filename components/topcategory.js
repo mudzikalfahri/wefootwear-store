@@ -2,7 +2,7 @@ import React from "react";
 
 function TopCategory() {
   return (
-    <div className="navbot max-w-6xl mx-auto md:flex place-items-center py-2">
+    <div className="navbot max-w-6xl mx-auto md:flex place-items-center py-2 bg-cusgray z-30 w-full">
       <div className="category overflow-x-auto flex place-items-center">
         <div className="py-2.5 px-6 rounded-3xl bg-cusblack text-xs text-white mr-3 shadow-xl">
           All Items
