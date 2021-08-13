@@ -1,29 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 function TopCategory() {
+  const { asPath } = useRouter();
+  useEffect(() => {
+    setIsActive(asPath);
+  }, [asPath]);
+
+  const categories = [
+    { name: "All items", slug: "/shop" },
+    { name: "Nike product", slug: "/shop/nike-product" },
+    { name: "Adidas", slug: "/shop/adidas" },
+    { name: "Puma", slug: "/shop/puma" },
+    { name: "Best seller", slug: "/shop/best-seller" },
+    { name: "New releases", slug: "/shop/new-releases" },
+  ];
+
+  const [isActive, setIsActive] = useState("/shop");
   return (
-    <div className="navbot max-w-6xl mx-auto md:flex place-items-center py-2 bg-cusgray z-30 w-full">
-      <div className="category overflow-x-auto flex place-items-center">
-        <div className="py-2.5 px-6 rounded-3xl bg-cusblack text-xs text-white mr-3 shadow-xl">
-          All Items
-        </div>
-        <div className="py-2.5 px-6 rounded-3xl bg-white text-gray-500 text-xs mr-3">
-          Nike product
-        </div>
-        <div className="py-2.5 px-6 rounded-3xl bg-white text-gray-500 text-xs mr-3">
-          Adidas
-        </div>
-        <div className="py-2.5 px-6 rounded-3xl bg-white text-gray-500 text-xs mr-3">
-          Puma
-        </div>
-        <div className="py-2.5 px-6 rounded-3xl bg-white text-gray-500 text-xs mr-3">
-          Best seller
-        </div>
-        <div className="py-2.5 px-6 rounded-3xl bg-white text-gray-500 text-xs mr-3">
-          New releases
-        </div>
+    <div className="navbot max-w-6xl mx-auto md:flex place-items-center bg-cusgray z-30 w-full">
+      <div className="category overflow-x-auto flex overflow-y-visible place-items-center py-2">
+        {categories.map((cat, idx) => (
+          <Link key={cat.slug} href={`http://localhost:3000${cat.slug}`}>
+            <button
+              onClick={() => {
+                setIsActive(cat.name);
+              }}
+              className={`${
+                isActive === cat.slug
+                  ? `bg-cusblack text-white  shadow-lg `
+                  : `bg-white text-cusblack`
+              } py-2.5 px-6 rounded-3xl text-xs mr-3 duration-200`}
+            >
+              {cat.name}
+            </button>
+          </Link>
+        ))}
       </div>
-      <div className="flex md:ml-40 mt-4 md:mt-0 justify-between pr-4 place-items-center flex-grow pl-2 h-full w-auto rounded-3xl overflow-hidden bg-white">
+      <div className="flex md:ml-auto mt-4 md:mt-0 justify-between pr-4 place-items-center flex-grow pl-2 h-full rounded-3xl overflow-hidden bg-white">
         <input
           className="text-xs p-2.5 focus:outline-none"
           type="text"

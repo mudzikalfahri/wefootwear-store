@@ -7,7 +7,7 @@ function ProductCard() {
         <img
           src="https://i.ibb.co/5vBY1FM/Superstar-Shoes-Black-EG4959-01-standard.jpg"
           alt=""
-          className="group object-cover"
+          className="h-full w-full group object-cover"
         />
         <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
           <div className="flex overflow-hidden">
