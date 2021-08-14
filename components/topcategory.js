@@ -25,7 +25,7 @@ function TopCategory() {
           <Link key={cat.slug} href={`http://localhost:3000${cat.slug}`}>
             <button
               onClick={() => {
-                setIsActive(cat.name);
+                setIsActive(cat.slug);
               }}
               className={`${
                 isActive === cat.slug

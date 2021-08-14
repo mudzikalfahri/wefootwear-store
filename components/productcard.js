@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CardSkeleton from "./cardskeleton";
 
 function ProductCard() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) return <CardSkeleton />;
+
   return (
     <div className="rounded-xl">
-      <div className="h-44 overflow-hidden rounded-xl relative group">
+      <div className="overflow-hidden rounded-xl relative group">
         <img
           src="https://i.ibb.co/5vBY1FM/Superstar-Shoes-Black-EG4959-01-standard.jpg"
           alt=""
-          className="h-full w-full group object-cover"
+          className="h-44 w-full group object-cover"
         />
         <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
           <div className="flex overflow-hidden">
@@ -47,9 +56,9 @@ function ProductCard() {
         </div>
       </div>
       <div className="px-2 py-3">
-        <p className="text-sm mb-1">Adidas Superstar 20s</p>
-        <p className="text-xs mb-1.5 text-gray-400">Black/White</p>
-        <p className="text-sm mb-1 font-semibold">Rp 1.200.000</p>
+        <p className="text-sm">Adidas Superstar 20s</p>
+        <p className="text-xs my-2 text-gray-400">Black/White</p>
+        <p className="text-sm font-semibold">Rp 1.200.000</p>
       </div>
     </div>
   );

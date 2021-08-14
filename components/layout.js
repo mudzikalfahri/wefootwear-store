@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./header";
 import ShopCarousel from "./shopcarousel";
 import SideCategory from "./sidecategory";
