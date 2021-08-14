@@ -17,7 +17,7 @@ function Layout({ children }) {
           <div className="col-span-4 md:col-span-3 flex flex-col py-4">
             <ShopCarousel />
             <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 p-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6">
                 {children}
               </div>
             </div>
