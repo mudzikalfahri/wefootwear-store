@@ -29,9 +29,9 @@ function ShopCarousel() {
             loading="lazy"
             src="https://i.ibb.co/TYNgNgp/Homepage-Banner-AF1-React-170120.jpg"
           />
-          <div className="cursor-pointer hover:bg-gray-200 absolute bottom-0 right-0 m-6 bg-white rounded-xl px-4 py-2 text-xs">
+          <button className="cursor-pointer hover:bg-gray-200 absolute bottom-0 right-0 m-6 bg-white rounded-xl px-4 py-2 text-xs">
             See Product
-          </div>
+          </button>
         </div>
         <div>
           <img

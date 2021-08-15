@@ -2,43 +2,42 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 
-function TopCategory() {
+function TopCategory({ categories }) {
   const { asPath } = useRouter();
   useEffect(() => {
     setIsActive(asPath);
   }, [asPath]);
 
-  const categories = [
-    { name: "All items", slug: "/shop" },
-    { name: "Nike product", slug: "/shop/nike-product" },
-    { name: "Adidas", slug: "/shop/adidas" },
-    { name: "Puma", slug: "/shop/puma" },
-    { name: "Best seller", slug: "/shop/best-seller" },
-    { name: "New releases", slug: "/shop/new-releases" },
-  ];
-
   const [isActive, setIsActive] = useState("/shop");
   return (
     <div className="navbot max-w-6xl mx-auto md:flex place-items-center bg-cusgray z-30 w-full">
-      <div className="category overflow-x-auto flex overflow-y-visible place-items-center py-2">
+      <div className="category overflow-x-auto flex flex-wrap place-items-center py-2">
+        <Link key="all" href={`/shop`}>
+          <button
+            className={`${
+              isActive == `/shop`
+                ? `bg-cusblack text-white  shadow-lg `
+                : `bg-white text-cusblack`
+            } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
+          >
+            All items
+          </button>
+        </Link>
         {categories.map((cat, idx) => (
-          <Link key={cat.slug} href={`http://localhost:3000${cat.slug}`}>
+          <Link key={cat.slug} href={`/shop/${cat.slug}`}>
             <button
-              onClick={() => {
-                setIsActive(cat.slug);
-              }}
               className={`${
-                isActive === cat.slug
+                isActive == `/shop/${cat.slug}`
                   ? `bg-cusblack text-white  shadow-lg `
                   : `bg-white text-cusblack`
-              } py-2.5 px-6 rounded-3xl text-xs mr-3 duration-200`}
+              } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
             >
               {cat.name}
             </button>
           </Link>
         ))}
       </div>
-      <div className="flex md:ml-auto mt-4 md:mt-0 justify-between pr-4 place-items-center flex-grow pl-2 h-full rounded-3xl overflow-hidden bg-white">
+      <div className="flex md:ml-auto justify-between pr-4 place-items-center flex-grow pl-2 h-full rounded-3xl overflow-hidden bg-white">
         <input
           className="text-xs p-2.5 focus:outline-none"
           type="text"

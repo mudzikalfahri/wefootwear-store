@@ -36,7 +36,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 15px;
 }
 
 /* Track */
@@ -45,11 +45,14 @@
 }
 
 /* Handle */
-/* ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #888;
-} */
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
 
 /* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #555;
-} */
+}

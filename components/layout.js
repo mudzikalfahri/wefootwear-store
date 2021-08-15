@@ -4,12 +4,12 @@ import ShopCarousel from "./shopcarousel";
 import SideCategory from "./sidecategory";
 import TopCategory from "./topcategory";
 
-function Layout({ children }) {
+function Layout({ children, categories }) {
   return (
     <div className="w-full min-h-screen bg-cusgray">
       <Header />
       <div className="max-w-6xl mx-auto pt-14 px-2 md:px-0">
-        <TopCategory />
+        <TopCategory categories={categories} />
         <div className="grid grid-cols-4 gap-x-6">
           <div className="md:inline hidden p-4">
             <SideCategory />

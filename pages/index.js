@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Header from "../components/header";
 
 export default function Home() {
-  const line = "OrcaShoes";
+  const line = "wefootwear";
 
   const sentence = {
     animate: {

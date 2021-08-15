@@ -86,7 +86,7 @@ function Product() {
                   ))}
                 </div>
               </div>
-              <div className="buttoncart flex my-4 w-full">
+              <div className="buttoncart flex mt-4 w-full">
                 <button className="w-4/5 md:w-3/5 bg-cusblack py-3 text-white rounded-lg text-sm flex justify-center place-items-center">
                   Add to Basket
                   <span>

@@ -26,7 +26,7 @@ function Header() {
             </svg>
           </button>
           <h3 className="text-md mr-2 font-semibold ml-3 text-cusblack">
-            OrcaShoes
+            wefootwear
           </h3>
         </div>
         <div className="profile flex items-center place-items-center">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardSkeleton from "./cardskeleton";
+import Image from "next/image";
 
 function ProductCard() {
   const [loading, setLoading] = useState(true);
@@ -13,10 +14,14 @@ function ProductCard() {
   return (
     <div className="rounded-xl">
       <div className="overflow-hidden rounded-xl relative group">
-        <img
+        <Image
+          height={600}
+          width={600}
+          objectFit="cover"
+          loading="lazy"
           src="https://i.ibb.co/5vBY1FM/Superstar-Shoes-Black-EG4959-01-standard.jpg"
           alt=""
-          className="h-44 w-full group object-cover"
+          className="rounded-xl"
         />
         <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
           <div className="flex overflow-hidden">
@@ -55,7 +60,7 @@ function ProductCard() {
           </div>
         </div>
       </div>
-      <div className="px-2 py-3">
+      <div className="px-2 py-2">
         <p className="text-sm">Adidas Superstar 20s</p>
         <p className="text-xs my-2 text-gray-400">Black/White</p>
         <p className="text-sm font-semibold">Rp 1.200.000</p>
