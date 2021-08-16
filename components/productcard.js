@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
-import CardSkeleton from "./cardskeleton";
+import React from "react";
 import Image from "next/image";
+import NumberFormat from "react-number-format";
 
-function ProductCard() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
-  if (loading) return <CardSkeleton />;
+function ProductCard({ name, slug, color, category, prop, price, type }) {
+  const { size, image } = prop[0];
 
   return (
     <div className="rounded-xl">
@@ -19,9 +13,9 @@ function ProductCard() {
           width={600}
           objectFit="cover"
           loading="lazy"
-          src="https://i.ibb.co/5vBY1FM/Superstar-Shoes-Black-EG4959-01-standard.jpg"
+          src={image[0]}
           alt=""
-          className="rounded-xl"
+          className="rounded-xl w-full bg-cusgray"
         />
         <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
           <div className="flex overflow-hidden">
@@ -61,9 +55,21 @@ function ProductCard() {
         </div>
       </div>
       <div className="px-2 py-2">
-        <p className="text-sm">Adidas Superstar 20s</p>
-        <p className="text-xs my-2 text-gray-400">Black/White</p>
-        <p className="text-sm font-semibold">Rp 1.200.000</p>
+        <p className="text-sm line-clamp-1">{name}</p>
+        <p className="text-xs my-2 text-gray-400">{color}</p>
+        {/* <p className="text-sm font-semibold">Rp {price}</p> */}
+        <NumberFormat
+          value={price}
+          className="text-sm font-semibold"
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"Rp"}
+          renderText={(value, props) => (
+            <p className="text-sm font-semibold" {...props}>
+              {value}
+            </p>
+          )}
+        />
       </div>
     </div>
   );
