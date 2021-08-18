@@ -17,7 +17,7 @@ export async function getStaticProps({ params }) {
   if (!data.length) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/shop",
         permanent: false,
       },
     };
@@ -48,11 +48,16 @@ export async function getStaticPaths() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
+  console.log(dataItems);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+  if (!data) {
+    return <div>404</div>;
+  }
 
   if (loading)
     return (

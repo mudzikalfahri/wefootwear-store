@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/dist/client/router";
 import Header from "../../components/header";
 import ProductSkeleton from "../../components/productskeleton";
 import NumberFormat from "react-number-format";
@@ -30,7 +29,7 @@ export async function getStaticProps({ params }) {
   if (!data.length) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/shop",
         permanent: false,
       },
     };
@@ -45,9 +44,10 @@ export async function getStaticProps({ params }) {
 }
 
 function Product({ item }) {
-  const { asPath } = useRouter();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
+
+  if (!item) return <div>404 not found</div>;
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
