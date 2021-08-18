@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./header";
 import ShopCarousel from "./shopcarousel";
 import SideCategory from "./sidecategory";
 import TopCategory from "./topcategory";
 
-function Layout({ children, categories }) {
+function Layout({ children, categories, types }) {
   return (
     <div className="w-full min-h-screen bg-cusgray">
       <Header />
@@ -12,7 +12,7 @@ function Layout({ children, categories }) {
         <TopCategory categories={categories} />
         <div className="grid grid-cols-4 gap-x-6">
           <div className="md:inline hidden p-4">
-            <SideCategory />
+            <SideCategory typesData={types} />
           </div>
           <div className="col-span-4 md:col-span-3 flex flex-col py-4">
             <ShopCarousel />

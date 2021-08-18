@@ -6,7 +6,7 @@ import NumberFormat from "react-number-format";
 import Link from "next/link";
 
 export async function getStaticPaths() {
-  const res = await fetch(process.env.APIURL + "/items");
+  const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");
   const data = await res.json();
 
   const paths = data.map((cat) => ({
@@ -21,7 +21,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const res = await fetch(process.env.APIURL + `/items?slug=${slug}`);
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_APIURL + `/items?slug=${slug}`
+  );
   const data = await res.json();
   const item = data[0];
 
@@ -83,7 +85,7 @@ function Product({ item }) {
           <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex">
             <div className="photo md:w-1/3">
               <img
-                className=" h-60 object-cover w-full rounded-2xl"
+                className=" h-60 object-cover w-full md:rounded-2xl"
                 src={item.prop[0].image[imgSelected]}
                 alt=""
               />
@@ -94,8 +96,10 @@ function Product({ item }) {
                     onClick={() => setImgSelected(idx)}
                     key={idx}
                     className={`${
-                      imgSelected == idx ? `border-2 border-cusblack` : ``
-                    } w-16 h-16 rounded-xl object-cover mr-3 cursor-pointer duration-100`}
+                      imgSelected == idx
+                        ? `border-2 border-cusblack filter brightness-90 `
+                        : ``
+                    } w-16 h-16 rounded-xl object-cover mr-3 cursor-pointer duration-100 `}
                     alt=""
                   />
                 ))}

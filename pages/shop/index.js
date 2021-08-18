@@ -3,7 +3,24 @@ import CardSkeleton from "../../components/cardskeleton";
 import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
 
-function Category({ data, dataItems }) {
+export async function getStaticProps() {
+  const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/categories");
+  const data = await res.json();
+  const resTypes = await fetch(process.env.NEXT_PUBLIC_APIURL + "/types");
+  const dataTypes = await resTypes.json();
+  const resItems = await fetch(process.env.NEXT_PUBLIC_APIURL + `/items`);
+  const dataItems = await resItems.json();
+
+  return {
+    props: {
+      data,
+      dataItems,
+      dataTypes,
+    },
+  };
+}
+
+function Category({ data, dataItems, dataTypes }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +29,7 @@ function Category({ data, dataItems }) {
 
   if (loading)
     return (
-      <Layout categories={data}>
+      <Layout categories={data} types={dataTypes}>
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
@@ -21,26 +38,12 @@ function Category({ data, dataItems }) {
       </Layout>
     );
   return (
-    <Layout categories={data}>
+    <Layout categories={data} types={dataTypes}>
       {dataItems.map(({ idx, ...otherProps }) => (
         <ProductCard key={idx} {...otherProps} />
       ))}
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const res = await fetch(process.env.APIURL + "/categories");
-  const data = await res.json();
-  const resItems = await fetch(process.env.APIURL + `/items`);
-  const dataItems = await resItems.json();
-
-  return {
-    props: {
-      data,
-      dataItems,
-    },
-  };
 }
 
 export default Category;

@@ -3,9 +3,9 @@ import Skeleton from "react-loading-skeleton";
 
 function ProductSkeleton() {
   return (
-    <div className="w-full bg-white rounded-2xl shadow-lg py-8 px-10 md:flex">
+    <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex">
       <div className="photo overflow-hidden md:w-1/3">
-        <Skeleton className="h-4/5" />
+        <Skeleton className="h-56 md:h-4/5" />
         <div className="w-full mt-2">
           <Skeleton className="w-20 h-16" />
         </div>

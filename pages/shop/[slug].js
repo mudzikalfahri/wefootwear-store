@@ -5,10 +5,12 @@ import ProductCard from "../../components/productcard";
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const res = await fetch(process.env.APIURL + "/categories");
+  const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/categories");
   const data = await res.json();
+  const resTypes = await fetch(process.env.NEXT_PUBLIC_APIURL + "/types");
+  const dataTypes = await resTypes.json();
   const resItems = await fetch(
-    process.env.APIURL + `/items?category.slug=${slug}`
+    process.env.NEXT_PUBLIC_APIURL + `/items?category.slug=${slug}`
   );
   const dataItems = await resItems.json();
 
@@ -16,12 +18,13 @@ export async function getStaticProps({ params }) {
     props: {
       data,
       dataItems,
+      dataTypes,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(process.env.APIURL + "/categories");
+  const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/categories");
   const data = await res.json();
 
   const paths = data.map((cat) => ({
@@ -34,7 +37,7 @@ export async function getStaticPaths() {
   };
 }
 
-function Category({ data, dataItems }) {
+function Category({ data, dataItems, dataTypes }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,7 +46,7 @@ function Category({ data, dataItems }) {
 
   if (loading)
     return (
-      <Layout categories={data}>
+      <Layout categories={data} types={dataTypes}>
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
@@ -53,7 +56,7 @@ function Category({ data, dataItems }) {
     );
 
   return (
-    <Layout categories={data}>
+    <Layout categories={data} types={dataTypes}>
       {dataItems.length ? (
         dataItems.map(({ idx, ...otherProps }) => (
           <ProductCard key={idx} {...otherProps} />
