@@ -39,8 +39,8 @@ function Category({ data, dataItems, dataTypes }) {
     );
   return (
     <Layout categories={data} types={dataTypes}>
-      {dataItems.map(({ idx, ...otherProps }) => (
-        <ProductCard key={idx} {...otherProps} />
+      {dataItems.map(({ slug, ...otherProps }) => (
+        <ProductCard key={slug} {...otherProps} />
       ))}
     </Layout>
   );

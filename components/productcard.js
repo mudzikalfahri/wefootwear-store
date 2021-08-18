@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 function ProductCard({ name, slug, color, category, prop, price, type }) {
   const { size, image } = prop[0];
@@ -10,15 +11,21 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
     <Link href={"/product/" + slug}>
       <div className="rounded-xl cursor-pointer">
         <div className="overflow-hidden rounded-xl relative group">
-          <Image
-            height={600}
-            width={600}
-            objectFit="cover"
-            loading="lazy"
-            src={image[0]}
-            alt=""
-            className="rounded-xl w-full bg-cusgray"
-          />
+          <motion.div
+            initial={{ scale: 1.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Image
+              height={600}
+              width={600}
+              objectFit="cover"
+              loading="lazy"
+              src={image[0]}
+              alt=""
+              className="rounded-xl w-full bg-cusgray"
+            />
+          </motion.div>
           <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
             <div className="flex overflow-hidden">
               <div className="p-2 bg-white mr-1 rounded-lg ">
