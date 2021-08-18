@@ -14,12 +14,22 @@ export async function getStaticProps({ params }) {
   );
   const dataItems = await resItems.json();
 
+  if (!data.length) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       data,
       dataItems,
       dataTypes,
     },
+    revalidate: 10,
   };
 }
 
