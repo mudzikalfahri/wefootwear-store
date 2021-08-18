@@ -8,8 +8,8 @@ function Header() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 px-2 md:px-0">
-      <div className=" navtop max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
+    <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 md:px-0">
+      <div className="px-2 navtop max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
         <div className="burger flex items-center">
           <button onClick={handleOpen}>
             <svg
