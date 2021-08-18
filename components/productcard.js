@@ -14,7 +14,7 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
           <motion.div
             initial={{ scale: 1.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
           >
             <Image
               height={600}

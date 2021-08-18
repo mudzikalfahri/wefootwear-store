@@ -73,8 +73,8 @@ function Category({ data, dataItems, dataTypes }) {
   return (
     <Layout categories={data} types={dataTypes}>
       {dataItems.length ? (
-        dataItems.map(({ idx, slug, ...otherProps }) => (
-          <ProductCard key={slug} {...otherProps} />
+        dataItems.map(({ slug, ...otherProps }) => (
+          <ProductCard key={slug} slug={slug} {...otherProps} />
         ))
       ) : (
         <p className="col-span-full mx-auto text-sm text-gray-400">
