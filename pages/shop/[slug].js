@@ -24,6 +24,14 @@ export async function getStaticProps({ params }) {
       },
     };
   }
+  if (!dataItems.length) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
@@ -81,7 +89,7 @@ function Category({ data, dataItems, dataTypes }) {
 
   return (
     <Layout categories={data} types={dataTypes}>
-      {data_items.length ? (
+      {data_items.length > 0 ? (
         data_items.map(({ slug, ...otherProps }) => (
           <ProductCard key={slug} slug={slug} {...otherProps} />
         ))

@@ -13,6 +13,15 @@ export async function getStaticProps() {
   const resItems = await fetch(process.env.NEXT_PUBLIC_APIURL + `/items`);
   const dataItems = await resItems.json();
 
+  if (!dataItems.length) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       data,
@@ -32,6 +41,7 @@ function Category({ data, dataItems, dataTypes }) {
       return true;
     }
   });
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
