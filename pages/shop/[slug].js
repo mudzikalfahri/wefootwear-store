@@ -24,14 +24,6 @@ export async function getStaticProps({ params }) {
       },
     };
   }
-  if (!dataItems.length) {
-    return {
-      redirect: {
-        destination: "/shop",
-        permanent: false,
-      },
-    };
-  }
 
   return {
     props: {
