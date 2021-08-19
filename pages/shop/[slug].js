@@ -27,7 +27,7 @@ export async function getStaticProps({ params }) {
   if (!dataItems.length) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/shop",
         permanent: false,
       },
     };
@@ -58,6 +58,10 @@ export async function getStaticPaths() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
+  if (!dataItems) {
+    return <div>404</div>;
+  }
+
   const recent_category = useSelector(recentCategory);
   const data_items = dataItems.filter((item) => {
     if (recent_category.length > 0) {
