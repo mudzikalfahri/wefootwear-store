@@ -17,6 +17,7 @@ export async function getStaticProps() {
       dataItems,
       dataTypes,
     },
+    revalidate: 5,
   };
 }
 

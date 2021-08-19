@@ -29,7 +29,7 @@ export async function getStaticProps({ params }) {
       dataItems,
       dataTypes,
     },
-    revalidate: 10,
+    revalidate: 5,
   };
 }
 
