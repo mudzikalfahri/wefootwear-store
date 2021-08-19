@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import CardSkeleton from "../../components/cardskeleton";
 import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
+import { useSelector } from "react-redux";
+import { recentCategory } from "../../slices/categorySlice";
 
 export async function getStaticProps() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/categories");
@@ -22,6 +24,14 @@ export async function getStaticProps() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
+  const recent_category = useSelector(recentCategory);
+  const data_items = dataItems.filter((item) => {
+    if (recent_category.length > 0) {
+      return item.type.name == recent_category;
+    } else {
+      return true;
+    }
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,9 +50,15 @@ function Category({ data, dataItems, dataTypes }) {
     );
   return (
     <Layout categories={data} types={dataTypes}>
-      {dataItems.map(({ slug, ...otherProps }) => (
-        <ProductCard key={slug} slug={slug} {...otherProps} />
-      ))}
+      {data_items.length < 1 ? (
+        <p className="col-span-full mx-auto text-sm text-gray-400">
+          No item found
+        </p>
+      ) : (
+        data_items.map(({ slug, ...otherProps }) => (
+          <ProductCard key={slug} slug={slug} {...otherProps} />
+        ))
+      )}
     </Layout>
   );
 }

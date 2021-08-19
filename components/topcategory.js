@@ -16,7 +16,7 @@ function TopCategory({ categories }) {
           <button
             className={`${
               isActive == `/shop`
-                ? `bg-cusblack text-white  shadow-lg `
+                ? `bg-cusblack text-white shadow-lg `
                 : `bg-white text-cusblack`
             } py-2.5 px-6 rounded-3xl text-xs mr-3 mb-2 md:mb-0`}
           >

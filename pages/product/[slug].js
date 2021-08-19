@@ -107,7 +107,7 @@ function Product({ item }) {
                       imgSelected == idx
                         ? `border-2 border-cusblack filter brightness-90 `
                         : ``
-                    } w-16 h-16 rounded-xl object-cover mr-3 cursor-pointer duration-100 `}
+                    } md:w-14 md:h-14 h-16 w-16 rounded-xl object-cover mr-3 cursor-pointer duration-100 `}
                     alt=""
                   />
                 ))}
@@ -135,7 +135,7 @@ function Product({ item }) {
               <h1 className="text-3xl text-cusblack font-medium my-3">
                 {item.name}
               </h1>
-              <p className="text-sm text-gray-400">Black / White</p>
+              <p className="text-sm text-gray-400">{item.color}</p>
               <NumberFormat
                 value={item.price}
                 className="my-3 font-semibold text-lg text-cusblack"
@@ -162,7 +162,7 @@ function Product({ item }) {
                 </div>
               </div>
               <div className="buttoncart flex mt-5 w-full">
-                <button className="w-4/5 md:w-3/5 bg-cusblack py-3 text-white rounded-lg text-sm flex justify-center place-items-center">
+                <button className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center">
                   Add to Basket
                   <span>
                     <svg
@@ -175,7 +175,7 @@ function Product({ item }) {
                     </svg>
                   </span>
                 </button>
-                <button className="w-1/5 ml-2 bg-white border border-cusblack py-3 text-cusblack rounded-lg text-sm">
+                <button className="w-1/5 ml-2 bg-white border border-cusblack py-4 text-cusblack rounded-lg text-sm">
                   <svg
                     className="w-5 h-5 m-auto"
                     fill="none"

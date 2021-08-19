@@ -48,7 +48,7 @@ export default function Home() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="text-2xl md:text-6xl font-semibold text-white  overflow-hidden"
+            className="text-4xl md:text-6xl font-semibold text-white  overflow-hidden"
           >
             <div className="flex overflow-hidden">
               {line.split("").map((char, idx) => {

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CardSkeleton from "../../components/cardskeleton";
 import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
+import { recentCategory } from "../../slices/categorySlice";
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
@@ -48,7 +50,14 @@ export async function getStaticPaths() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
-  console.log(dataItems);
+  const recent_category = useSelector(recentCategory);
+  const data_items = dataItems.filter((item) => {
+    if (recent_category.length > 0) {
+      return item.type.name == recent_category;
+    } else {
+      return true;
+    }
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,8 +81,8 @@ function Category({ data, dataItems, dataTypes }) {
 
   return (
     <Layout categories={data} types={dataTypes}>
-      {dataItems.length ? (
-        dataItems.map(({ slug, ...otherProps }) => (
+      {data_items.length ? (
+        data_items.map(({ slug, ...otherProps }) => (
           <ProductCard key={slug} slug={slug} {...otherProps} />
         ))
       ) : (
