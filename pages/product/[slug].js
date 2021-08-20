@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
+import NotFound from "../404";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");

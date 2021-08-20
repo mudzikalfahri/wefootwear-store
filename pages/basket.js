@@ -9,8 +9,8 @@ function Basket() {
   return (
     <div className="w-full min-h-screen relative bg-cusgray pb-10">
       <Header />
-      <div className="max-w-6xl mx-auto pt-20 px-5 border border-black">
-        <div className="border border-black w-full grid grid-cols-3 gap-x-4">
+      <div className="max-w-6xl mx-auto pt-20 px-5">
+        <div className="w-full grid grid-cols-3 gap-x-4">
           <div className="col-span-2 md:mr-5">
             <div className="">
               <div className="shadow-lg rounded-xl bg-cusblack text-white px-5 py-3">
