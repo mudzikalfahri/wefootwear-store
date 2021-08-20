@@ -4,6 +4,8 @@ import ProductSkeleton from "../../components/productskeleton";
 import NumberFormat from "react-number-format";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../slices/basketSlice";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");
@@ -45,10 +47,11 @@ export async function getStaticProps({ params }) {
 }
 
 function Product({ item }) {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
 
-  if (!item) return <div>404 not found</div>;
+  if (!item) return <NotFound />;
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -162,7 +165,10 @@ function Product({ item }) {
                 </div>
               </div>
               <div className="buttoncart flex mt-5 w-full">
-                <button className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center">
+                <button
+                  onClick={() => dispatch(addToBasket(item))}
+                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center"
+                >
                   Add to Basket
                   <span>
                     <svg

@@ -4,6 +4,7 @@ import CardSkeleton from "../../components/cardskeleton";
 import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
 import { recentCategory } from "../../slices/categorySlice";
+import NotFound from "../404";
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
@@ -16,7 +17,7 @@ export async function getStaticProps({ params }) {
   );
   const dataItems = await resItems.json();
 
-  if (!data.length) {
+  if (!dataItems.length) {
     return {
       redirect: {
         destination: "/shop",
@@ -50,8 +51,8 @@ export async function getStaticPaths() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
-  if (!dataItems) {
-    return <div>404</div>;
+  if (!dataItems || !data) {
+    return <NotFound />;
   }
 
   const recent_category = useSelector(recentCategory);
@@ -67,10 +68,6 @@ function Category({ data, dataItems, dataTypes }) {
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-
-  if (!data) {
-    return <div>404</div>;
-  }
 
   if (loading)
     return (

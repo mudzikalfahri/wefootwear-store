@@ -1,7 +1,11 @@
+import Link from "next/link";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 import MenuNav from "./menunav";
 
 function Header() {
+  const items = useSelector(selectItems);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -30,22 +34,31 @@ function Header() {
           </h3>
         </div>
         <div className="profile flex items-center place-items-center">
-          <div className="w-8 flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
-            <svg
-              className="w-6 h-6 text-cusblack m-auto"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              />
-            </svg>
-          </div>
+          <Link href="/basket">
+            <div className="w-8 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
+              <svg
+                className="w-6 h-6 text-cusblack m-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+              <div
+                className={`${
+                  items.length > 0 ? `flex` : `hidden`
+                } absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
+              >
+                {items.length}
+              </div>
+            </div>
+          </Link>
           <div className="w-8 flex items-center h-8 mr-2 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
             <svg
               className="w-6 m-auto h-6 text-cusblack"
