@@ -17,15 +17,6 @@ export async function getStaticProps({ params }) {
   );
   const dataItems = await resItems.json();
 
-  if (!dataItems.length) {
-    return {
-      redirect: {
-        destination: "/shop",
-        permanent: false,
-      },
-    };
-  }
-
   return {
     props: {
       data,
