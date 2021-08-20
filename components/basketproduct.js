@@ -1,17 +1,21 @@
 import React from "react";
+import NumberFormat from "react-number-format";
+import { useDispatch } from "react-redux";
+import { removeFromBasket, plusItem, minusItem } from "../slices/basketSlice";
 
-function BasketProduct({ item }) {
+function BasketProduct({ item, idx }) {
+  const dispatch = useDispatch();
   return (
-    <div className="product flex justify-between mb-6">
-      <div className="image flex">
+    <div className="product md:flex justify-between mb-6">
+      <div className="image md:flex">
         <img
-          className="w-32 h-32 object-cover rounded-xl"
+          className="w-full md:w-32 h-32 object-cover rounded-xl"
           src={item.prop[0].image[0]}
           alt=""
         />
         <div className="ml-3 flex flex-col text-cusblack justify-between py-1">
           <p className="font-medium">{item.name}</p>
-          <ul className="text-sm leading-relaxed">
+          <ul className="text-sm leading-relaxed text-gray-400">
             <li>Color: {item.color}</li>
             <li>Design ID: {item.slug}</li>
             <li>Quantity: {item.quantity}</li>
@@ -20,9 +24,25 @@ function BasketProduct({ item }) {
         </div>
       </div>
       <div className="flex flex-col justify-between py-1">
-        <h1 className="font-semibold text-cusblack text-right">{item.price}</h1>
+        <NumberFormat
+          value={item.price}
+          className="font-semibold text-cusblack text-right"
+          displayType={"text"}
+          thousandSeparator={true}
+          prefix={"Rp"}
+          renderText={(value, props) => (
+            <h1 className="font-semibold text-cusblack text-right" {...props}>
+              {value}
+            </h1>
+          )}
+        />
         <div className="flex ml-auto text-cusblack">
-          <button className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100">
+          <button
+            onClick={() => {
+              if (item.quantity > 1) dispatch(minusItem(idx));
+            }}
+            className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100"
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -38,7 +58,10 @@ function BasketProduct({ item }) {
               />
             </svg>
           </button>
-          <button className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 mx-1">
+          <button
+            onClick={() => dispatch(plusItem(idx))}
+            className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -54,7 +77,10 @@ function BasketProduct({ item }) {
               />
             </svg>
           </button>
-          <button className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium">
+          <button
+            onClick={() => dispatch(removeFromBasket(item))}
+            className="border border-cusblack rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
+          >
             REMOVE
           </button>
         </div>

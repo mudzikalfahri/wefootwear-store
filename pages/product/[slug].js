@@ -51,6 +51,7 @@ function Product({ item }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
+  const [selectedSize, setSelectedSize] = useState();
 
   if (!item) return <NotFound />;
 
@@ -156,19 +157,24 @@ function Product({ item }) {
                 <p className="mb-2">Select size</p>
                 <div className="flex">
                   {item.prop[0].size.map((size, idx) => (
-                    <div
+                    <button
+                      onClick={() => setSelectedSize(size)}
                       key={idx}
-                      className="border mr-2 duration-200 border-cusblack text-cusblack flex place-items-center justify-center rounded-full w-12 h-12 cursor-pointer hover:bg-cusblack hover:text-white"
+                      className={`${
+                        selectedSize === size
+                          ? `bg-cusblack text-white`
+                          : `text-cusblack border border-cusblack`
+                      } mr-2 duration-200 flex place-items-center justify-center rounded-full w-12 h-12 cursor-pointer hover:bg-cusblack hover:text-white`}
                     >
                       {size}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
               <div className="buttoncart flex mt-5 w-full">
                 <button
                   onClick={() => dispatch(addToBasket(item))}
-                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center"
+                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center active:bg-gray-800 duration-100"
                 >
                   Add to Basket
                   <span>

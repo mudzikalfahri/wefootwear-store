@@ -55,7 +55,7 @@ function Header() {
                   items.length > 0 ? `flex` : `hidden`
                 } absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
               >
-                {items.length}
+                {items.reduce((a, item) => a + item.quantity, 0)}
               </div>
             </div>
           </Link>

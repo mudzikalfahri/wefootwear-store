@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function MenuNav({ handleOpen, isOpen }) {
   if (!isOpen) return <div></div>;
@@ -31,10 +32,18 @@ function MenuNav({ handleOpen, isOpen }) {
       </button>
       <div className="text-center leading-loose text-md text-cusblack px-20 py-10 bg-white rounded-2xl">
         <ul>
-          <li className="hover:underline">Home</li>
-          <li className="hover:underline">Shop</li>
-          <li className="hover:underline">About</li>
-          <li className="hover:underline">Our Store</li>
+          <li className="hover:underline cursor-pointer">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="hover:underline cursor-pointer">
+            <Link href="/shop">Shop</Link>
+          </li>
+          <li className="hover:underline cursor-pointer">
+            <Link href="/">About</Link>
+          </li>
+          <li className="hover:underline cursor-pointer">
+            <Link href="/">Our Store</Link>
+          </li>
         </ul>
       </div>
     </motion.div>
