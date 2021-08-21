@@ -30,20 +30,28 @@ function MenuNav({ handleOpen, isOpen }) {
           />
         </svg>
       </button>
-      <div className="text-center leading-loose text-md text-cusblack px-20 py-10 bg-white rounded-2xl">
-        <ul>
-          <li className="hover:underline cursor-pointer">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="hover:underline cursor-pointer">
-            <Link href="/shop">Shop</Link>
-          </li>
-          <li className="hover:underline cursor-pointer">
-            <Link href="/">About</Link>
-          </li>
-          <li className="hover:underline cursor-pointer">
-            <Link href="/">Our Store</Link>
-          </li>
+      <div className="text-center leading-loose flex place-items-center text-md text-cusblack w-52 h-56 bg-white rounded-2xl">
+        <ul className="w-full">
+          <Link href="/">
+            <li className=" hover:underline mx-4 rounded-xl cursor-pointer">
+              Home
+            </li>
+          </Link>
+          <Link href="/shop">
+            <li className=" hover:underline mx-4 rounded-xl cursor-pointer">
+              Shop
+            </li>
+          </Link>
+          <Link href="/about">
+            <li className=" hover:underline mx-4 rounded-xl cursor-pointer">
+              About
+            </li>
+          </Link>
+          <Link href="/store">
+            <li className=" hover:underline mx-4 rounded-xl cursor-pointer">
+              Our Store
+            </li>
+          </Link>
         </ul>
       </div>
     </motion.div>

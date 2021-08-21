@@ -12,9 +12,9 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
       <div className="rounded-xl cursor-pointer">
         <div className="overflow-hidden rounded-xl relative group">
           <motion.div
-            initial={{ scale: 1.3, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3 }}
+            initial={{ scale: 1.3, x: 50, opacity: 0 }}
+            animate={{ scale: 1, x: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
           >
             <Image
               height={600}

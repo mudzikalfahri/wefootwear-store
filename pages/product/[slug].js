@@ -91,9 +91,9 @@ function Product({ item }) {
           <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex">
             <div className="photo md:w-1/3">
               <motion.div
-                transition={{ delay: 0.5 }}
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                initial={{ scale: 1, x: 50, y: 50, opacity: 0 }}
+                animate={{ scale: 1, x: 0, y: 0, opacity: 1 }}
               >
                 <img
                   className=" h-60 object-cover w-full md:rounded-2xl"

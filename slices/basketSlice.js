@@ -23,6 +23,10 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 export const basketSlice = createSlice({
   name: "basket",
   initialState,
+  hydrate: (state, action) => {
+    // do not do state = action.payload it will not update the store
+    return action.payload;
+  },
   reducers: {
     addToBasket: (state, action) => {
       state.items = addItemToCart(state.items, action.payload);

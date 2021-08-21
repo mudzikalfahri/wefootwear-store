@@ -74,9 +74,12 @@ function Basket() {
               </div>
 
               <div className="my-3 border-b border-cusblack pb-2">
-                {items.map((item) => (
-                  <div className="flex justify-between place-items-center text-sm mb-1">
-                    <p>{item.name}</p>
+                {items.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex justify-between place-items-center text-sm mb-1"
+                  >
+                    <p className="pr-2">{item.name}</p>
                     <NumberFormat
                       value={item.price * item.quantity}
                       displayType={"text"}
