@@ -62,7 +62,7 @@ function Product({ item }) {
   return (
     <div className="bg-cusgray min-h-screen">
       <Header />
-      <div className="max-w-4xl mx-auto h-screen pt-16 overflow-hidden">
+      <div className="max-w-4xl mx-auto h-screen pt-16">
         <div className="flex justify-between place-items-center py-4 px-1 mb-4">
           <Link href="/shop">
             <div className="w-9 h-9 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
@@ -88,7 +88,7 @@ function Product({ item }) {
         {loading ? (
           <ProductSkeleton />
         ) : (
-          <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex">
+          <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
               <motion.div
                 transition={{ delay: 0.3 }}

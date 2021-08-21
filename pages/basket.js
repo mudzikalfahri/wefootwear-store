@@ -35,7 +35,7 @@ function Basket() {
                   more
                 </p>
               </div>
-              <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg">
+              <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg overflow-hidden">
                 <p>Your Basket ({items.length})</p>
                 <div className="pt-5 pb-2">
                   {items.length > 0 ? (
