@@ -14,14 +14,12 @@ export const loadState = () => {
   }
 };
 
-const persistedState = loadState();
-
 export const store = configureStore({
   reducer: {
     basket: basketReducer,
     category: categoryReducer,
   },
-  preloadedState: persistedState,
+  preloadedState: loadState(),
 });
 
 store.subscribe(() => {

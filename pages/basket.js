@@ -1,4 +1,5 @@
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import NumberFormat from "react-number-format";
 import { useSelector } from "react-redux";
 import BasketProduct from "../components/basketproduct";
@@ -7,6 +8,17 @@ import { selectItems } from "../slices/basketSlice";
 
 function Basket() {
   const items = useSelector(selectItems);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 500);
+  }, []);
+
+  if (!items.length && loading == true) {
+    return (
+      <div className="w-full min-h-screen relative bg-cusgray pb-10"></div>
+    );
+  }
   return (
     <div className="w-full min-h-screen relative bg-cusgray pb-10">
       <Header />
@@ -31,7 +43,21 @@ function Basket() {
                       <BasketProduct idx={idx} key={item.slug} item={item} />
                     ))
                   ) : (
-                    <p>no items</p>
+                    <div className="flex flex-col items-center text-gray-400 text-sm mb-10">
+                      <img
+                        className="md:w-1/3 object-cover w-full"
+                        src="https://i.ibb.co/hWZhd6F/empty-cart-4a7779da-Convert-Image.png"
+                        alt=""
+                      />
+                      <p className="text-center">
+                        Your basket is empty,
+                        <br />
+                        to start shopping click{" "}
+                        <span className="underline">
+                          <Link href="/shop">here</Link>
+                        </span>
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
@@ -79,7 +105,7 @@ function Basket() {
                     key={idx}
                     className="flex justify-between place-items-center text-sm mb-1"
                   >
-                    <p className="pr-2">{item.name}</p>
+                    <p className="pr-3">{item.name}</p>
                     <NumberFormat
                       value={item.price * item.quantity}
                       displayType={"text"}

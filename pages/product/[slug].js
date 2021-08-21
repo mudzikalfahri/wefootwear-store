@@ -62,7 +62,7 @@ function Product({ item }) {
   return (
     <div className="bg-cusgray min-h-screen">
       <Header />
-      <div className="max-w-4xl mx-auto h-screen pt-16">
+      <div className="max-w-4xl mx-auto h-screen pt-16 overflow-hidden">
         <div className="flex justify-between place-items-center py-4 px-1 mb-4">
           <Link href="/shop">
             <div className="w-9 h-9 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
