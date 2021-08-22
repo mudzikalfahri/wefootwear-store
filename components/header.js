@@ -1,13 +1,17 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import MenuNav from "./menunav";
 
 function Header() {
-  const items = useSelector(selectItems);
-  const [isOpen, setIsOpen] = useState(false);
+  const data = useSelector(selectItems);
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    setItems(data);
+  });
 
+  const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -50,16 +54,19 @@ function Header() {
                   d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                 />
               </svg>
-              <div
-                className={`${
-                  items.length > 0 ? `flex` : `hidden`
+              {items.length > 0 ? (
+                <div
+                  className={`flex
                 } absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
-              >
-                {items.reduce((a, item) => a + item.quantity, 0)}
-              </div>
+                >
+                  {items.reduce((a, item) => a + item.quantity, 0)}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </Link>
-          <div className="w-8 flex items-center h-8 mr-2 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
+          <div className="w-8 flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
             <svg
               className="w-6 m-auto h-6 text-cusblack"
               fill="none"
