@@ -10,7 +10,7 @@ function ShopCarousel() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  if (loading) return <Skeleton className="h-64" />;
+  if (loading) return <Skeleton className="md:h-64" />;
   return (
     <div className="">
       <Carousel
@@ -25,24 +25,21 @@ function ShopCarousel() {
       >
         <div className="relative">
           <img
-            className="h-64 object-cover w-full pointer-events-none"
+            className="object-contain bg-white md:object-cover md:h-64 w-full pointer-events-none"
             loading="lazy"
             src="https://i.ibb.co/TYNgNgp/Homepage-Banner-AF1-React-170120.jpg"
           />
-          <button className="cursor-pointer hover:bg-gray-200 absolute bottom-0 right-0 m-6 bg-white rounded-xl px-4 py-2 text-xs">
-            See Product
-          </button>
         </div>
         <div>
           <img
-            className="h-64 object-cover w-full"
+            className="object-contain bg-white md:object-cover md:h-64 w-full"
             loading="lazy"
             src="https://i.ibb.co/kHhhbbG/adidas-banner-grpn-US.jpg"
           />
         </div>
         <div>
           <img
-            className="h-64 object-cover w-full"
+            className="object-contain bg-white md:object-cover md:h-64 w-full"
             loading="lazy"
             src="https://i.ibb.co/WvN6bC5/PLPBanner-Converse-1920x700.png"
           />

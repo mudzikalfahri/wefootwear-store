@@ -2,13 +2,17 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
+import { selectWishItems } from "../slices/wishlistSlice";
 import MenuNav from "./menunav";
 
 function Header() {
   const data = useSelector(selectItems);
   const [items, setItems] = useState([]);
+  const dataWish = useSelector(selectWishItems);
+  const [wish, setWish] = useState([]);
   useEffect(() => {
     setItems(data);
+    setWish(dataWish);
   });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -84,22 +88,34 @@ function Header() {
               )}
             </div>
           </Link>
-          <div className="w-8 flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
-            <svg
-              className="w-6 m-auto h-6 text-cusblack"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-          </div>
+          <Link href="/wishlist">
+            <div className="w-8 relative flex items-center h-8 mr-1 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
+              <svg
+                className="w-6 m-auto h-6 text-cusblack"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+              {wish.length > 0 ? (
+                <div
+                  className={`flex
+                } absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
+                >
+                  {wish.length}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </Link>
           <div className="w-8 flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
             <svg
               className="w-6 m-auto h-6 text-cusblack"

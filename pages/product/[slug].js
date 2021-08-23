@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
 import NotFound from "../404";
+import { addToWishlist } from "../../slices/wishlistSlice";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");
@@ -96,17 +97,13 @@ function Product({ item }) {
         ) : (
           <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
-              <motion.div
-                transition={{ delay: 0.3 }}
-                initial={{ scale: 1, x: 50, y: 50, opacity: 0 }}
-                animate={{ scale: 1, x: 0, y: 0, opacity: 1 }}
-              >
+              <div>
                 <img
                   className=" h-60 object-cover w-full md:rounded-2xl"
                   src={item.prop[0].image[imgSelected]}
                   alt=""
                 />
-              </motion.div>
+              </div>
               <div className="px-2 md:px-0 flex mt-4">
                 {item.prop[0].image.map((img, idx) => (
                   <img
@@ -225,7 +222,10 @@ function Product({ item }) {
                     </motion.span>
                   )}
                 </button>
-                <button className="w-1/5 ml-2 bg-white border border-cusblack py-4 text-cusblack rounded-lg text-sm">
+                <button
+                  onClick={() => dispatch(addToWishlist(item))}
+                  className="w-1/5 ml-2 bg-white border border-cusblack py-4 text-cusblack rounded-lg text-sm"
+                >
                   <svg
                     className="w-5 h-5 m-auto"
                     fill="none"

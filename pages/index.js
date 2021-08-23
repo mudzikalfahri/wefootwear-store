@@ -105,21 +105,21 @@ export default function Home() {
             <img
               className="h-screen object-cover w-full"
               loading="lazy"
-              src="https://i.ibb.co/XYTqhK5/Panduan-Sneakers-Pria-Terfavorit-1-1-1536x768.jpg"
+              src="https://i.ibb.co/pffTtVv/https-hypebeast-com-image-2018-12-these-are-the-best-sneakers-of-2018-005.jpg"
             />
           </div>
           <div>
             <img
               className="h-screen object-cover w-full"
               loading="lazy"
-              src="https://i.ibb.co/7pYdrb6/whitesneakers-2048px-0427.jpg"
+              src="https://i.ibb.co/4YskC1T/c095795f992f84b92b16c65b93ecb5f5.jpg"
             />
           </div>
           <div>
             <img
               className="h-screen object-cover w-full"
               loading="lazy"
-              src="https://i.ibb.co/x13KLK0/compass-gazelle-matcha-sneaker.jpg"
+              src="https://i.ibb.co/bvvFBPt/R.jpg"
             />
           </div>
         </Carousel>
