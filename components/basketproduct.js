@@ -23,9 +23,9 @@ function BasketProduct({ item, idx }) {
           <p className="font-medium">{item.name}</p>
           <ul className="text-sm leading-relaxed text-gray-400">
             <li>Color: {item.color}</li>
-            <li>Design ID: {item.slug}</li>
+            <li>Design ID: {item.category.slug}</li>
             <li>Quantity: {item.quantity}</li>
-            <li>Size: 43</li>
+            <li>Size: {item.prop[0].size[0]}</li>
           </ul>
         </div>
       </div>
@@ -42,7 +42,7 @@ function BasketProduct({ item, idx }) {
             </h1>
           )}
         />
-        <div className="flex ml-auto text-cusblack">
+        <div className="flex ml-auto text-cusblack mt-1 md:mt-0">
           <button
             onClick={() => {
               if (item.quantity > 1) dispatch(minusItem(idx));

@@ -51,7 +51,13 @@ function Product({ item }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
-  const [selectedSize, setSelectedSize] = useState();
+  const [selectedSize, setSelectedSize] = useState(0);
+  const [added, setAdded] = useState(false);
+
+  const handleAdded = () => {
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
 
   if (!item) return <NotFound />;
 
@@ -158,10 +164,10 @@ function Product({ item }) {
                 <div className="flex">
                   {item.prop[0].size.map((size, idx) => (
                     <button
-                      onClick={() => setSelectedSize(size)}
+                      onClick={() => setSelectedSize(idx)}
                       key={idx}
                       className={`${
-                        selectedSize === size
+                        selectedSize === idx
                           ? `bg-cusblack text-white`
                           : `text-cusblack border border-cusblack`
                       } mr-2 duration-200 flex place-items-center justify-center rounded-full w-12 h-12 cursor-pointer hover:bg-cusblack hover:text-white`}
@@ -173,20 +179,51 @@ function Product({ item }) {
               </div>
               <div className="buttoncart flex mt-5 w-full">
                 <button
-                  onClick={() => dispatch(addToBasket(item))}
-                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm flex justify-center place-items-center active:bg-gray-800 duration-100"
+                  onClick={() => {
+                    dispatch(addToBasket(item));
+                    handleAdded();
+                  }}
+                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100"
                 >
-                  Add to Basket
-                  <span>
-                    <svg
-                      className="ml-2 w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
+                  {added ? (
+                    <motion.div
+                      initial={{ y: -100 }}
+                      animate={{ y: 0 }}
+                      className="flex justify-center place-items-center "
                     >
-                      <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                    </svg>
-                  </span>
+                      Added
+                      <svg
+                        className="ml-2 w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </motion.div>
+                  ) : (
+                    <motion.span
+                      initial={{ y: -100 }}
+                      animate={{ y: 0 }}
+                      className="flex justify-center place-items-center "
+                    >
+                      Add to basket
+                      <span>
+                        <svg
+                          className="ml-2 w-5 h-5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                        </svg>
+                      </span>
+                    </motion.span>
+                  )}
                 </button>
                 <button className="w-1/5 ml-2 bg-white border border-cusblack py-4 text-cusblack rounded-lg text-sm">
                   <svg
