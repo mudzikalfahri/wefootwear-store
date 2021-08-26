@@ -176,6 +176,7 @@ function Product({ item }) {
               </div>
               <div className="buttoncart flex mt-5 w-full">
                 <button
+                  disabled={added}
                   onClick={() => {
                     dispatch(addToBasket(item));
                     handleAdded();

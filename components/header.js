@@ -20,7 +20,7 @@ function Header() {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 md:px-0">
+    <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 md:px-0 duration-200">
       <div className="px-2 navtop max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
         <div className="burger flex items-center">
           <button onClick={handleOpen}>
@@ -116,22 +116,24 @@ function Header() {
               )}
             </div>
           </Link>
-          <div className="w-8 flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
-            <svg
-              className="w-6 m-auto h-6 text-cusblack"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
-          </div>
+          <Link href="/login">
+            <div className="w-8 flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
+              <svg
+                className="w-6 m-auto h-6 text-cusblack"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+            </div>
+          </Link>
         </div>
       </div>
 
