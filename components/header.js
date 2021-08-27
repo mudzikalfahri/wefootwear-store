@@ -14,15 +14,14 @@ function Header() {
   const [cookie, setCookie] = useState({});
   useEffect(() => {
     const dataCookie = nookies.get();
-    setItems(data);
-    setWish(dataWish);
     try {
+      setItems(data);
+      setWish(dataWish);
       setCookie(JSON.parse(dataCookie.user));
-    } catch (error) {
+    } catch (err) {
       setCookie(dataCookie.user);
     }
-  }, []);
-
+  }, [data, dataWish]);
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(!isOpen);

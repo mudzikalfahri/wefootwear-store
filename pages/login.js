@@ -46,8 +46,8 @@ function Login() {
       setError(true);
     }
     if (res.jwt) {
-      nookies.set(null, "token", res.jwt);
-      nookies.set(null, "user", res.user);
+      nookies.set(null, "token", JSON.stringify(res.jwt));
+      nookies.set(null, "user", JSON.stringify(res.user));
       setField({});
       console.log("success");
       e.target.reset();

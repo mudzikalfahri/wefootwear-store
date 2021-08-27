@@ -35,7 +35,7 @@ function Layout({ children, categories, types }) {
             onClick={() => setOpen(!open)}
             className={`${
               open ? `fixed` : `hidden`
-            } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-30 flex w-full justify-center place-items-center top-0 lg:p-4`}
+            } lg:static lg:inline bg-gray-400 lg:bg-cusgray h-screen bg-opacity-30 z-20 flex w-full justify-center place-items-center top-0 lg:p-4`}
           >
             <SideCategory typesData={types} />
           </div>
