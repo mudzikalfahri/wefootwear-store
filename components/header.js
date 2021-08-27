@@ -4,16 +4,24 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import { selectWishItems } from "../slices/wishlistSlice";
 import MenuNav from "./menunav";
+import nookies from "nookies";
 
 function Header() {
   const data = useSelector(selectItems);
   const [items, setItems] = useState([]);
   const dataWish = useSelector(selectWishItems);
   const [wish, setWish] = useState([]);
+  const [cookie, setCookie] = useState({});
   useEffect(() => {
+    const dataCookie = nookies.get();
     setItems(data);
     setWish(dataWish);
-  });
+    try {
+      setCookie(JSON.parse(dataCookie.user));
+    } catch (error) {
+      setCookie(dataCookie.user);
+    }
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
@@ -37,7 +45,7 @@ function Header() {
               />
             </svg>
           </button>
-          <h3 className="text-md mr-2 font-semibold ml-3 text-cusblack">
+          <h3 className="hidden md:inline text-md mr-2 font-semibold ml-3 text-cusblack">
             wefootwear
           </h3>
         </div>
@@ -116,6 +124,7 @@ function Header() {
               )}
             </div>
           </Link>
+
           <Link href="/login">
             <div className="w-8 flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
               <svg

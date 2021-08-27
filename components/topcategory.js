@@ -10,7 +10,7 @@ function TopCategory({ categories }) {
 
   const [isActive, setIsActive] = useState("/shop");
   return (
-    <div className="navbot bg-cusgray z-30 w-full">
+    <div className="navbot bg-cusgray z-30 w-full px-1 md:px-0">
       <div className=" mx-auto md:flex place-items-center max-w-6xl">
         <div className="category overflow-x-auto flex flex-wrap place-items-center py-2">
           <Link key="all" href={`/shop`}>
