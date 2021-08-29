@@ -70,7 +70,7 @@ function Product({ dataItem }) {
       selectedSizeProp: dataItem.prop[0].size[selectedSize],
     });
     setTimeout(() => setLoading(false), 1000);
-  }, []);
+  }, [selectedSize]);
 
   return (
     <div className="bg-cusgray min-h-screen">
@@ -193,7 +193,7 @@ function Product({ dataItem }) {
                     <motion.div
                       initial={{ y: -100 }}
                       animate={{ y: 0 }}
-                      className="flex justify-center place-items-center "
+                      className="flex justify-center place-items-center overflow-hidden"
                     >
                       Added
                       <svg
@@ -213,7 +213,7 @@ function Product({ dataItem }) {
                     <motion.span
                       initial={{ y: -100 }}
                       animate={{ y: 0 }}
-                      className="flex justify-center place-items-center "
+                      className="flex justify-center place-items-center overflow-hidden"
                     >
                       Add to basket
                       <span>

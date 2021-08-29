@@ -10,7 +10,7 @@ function ShopCarousel() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  if (loading) return <Skeleton className="md:h-64" />;
+  if (loading) return <Skeleton className="h-24 md:h-64" />;
   return (
     <div className="">
       <Carousel
@@ -25,21 +25,21 @@ function ShopCarousel() {
       >
         <div className="relative">
           <img
-            className="object-contain bg-white md:object-cover md:h-64 w-full pointer-events-none"
+            className=" bg-white h-24 object-cover md:h-64 w-full pointer-events-none"
             loading="lazy"
             src="https://i.ibb.co/TYNgNgp/Homepage-Banner-AF1-React-170120.jpg"
           />
         </div>
         <div>
           <img
-            className="object-contain bg-white md:object-cover md:h-64 w-full"
+            className=" bg-white h-24 object-cover md:h-64 w-full"
             loading="lazy"
             src="https://i.ibb.co/kHhhbbG/adidas-banner-grpn-US.jpg"
           />
         </div>
         <div>
           <img
-            className="object-contain bg-white md:object-cover md:h-64 w-full"
+            className=" bg-white h-24 object-cover md:h-64 w-full"
             loading="lazy"
             src="https://i.ibb.co/WvN6bC5/PLPBanner-Converse-1920x700.png"
           />
