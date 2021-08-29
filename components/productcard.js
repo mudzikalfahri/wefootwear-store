@@ -23,7 +23,7 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
               loading="lazy"
               src={image[0]}
               alt=""
-              className="rounded-xl w-full bg-cusgray"
+              className="rounded-xl w-full h-full bg-cusgray"
             />
           </motion.div>
           <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">

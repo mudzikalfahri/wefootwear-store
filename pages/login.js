@@ -28,7 +28,6 @@ function Login() {
 
   const handleChange = (e) => {
     setField({ ...field, [e.target.name]: e.target.value });
-    console.log(field);
   };
 
   const doLogin = async (e) => {

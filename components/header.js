@@ -5,12 +5,15 @@ import { selectItems } from "../slices/basketSlice";
 import { selectWishItems } from "../slices/wishlistSlice";
 import MenuNav from "./menunav";
 import nookies from "nookies";
+import { useRouter } from "next/dist/client/router";
 
 function Header() {
+  const router = useRouter();
   const data = useSelector(selectItems);
   const [items, setItems] = useState([]);
   const dataWish = useSelector(selectWishItems);
   const [wish, setWish] = useState([]);
+  const [open, setOpen] = useState(false);
   const [cookie, setCookie] = useState({});
   useEffect(() => {
     const dataCookie = nookies.get();
@@ -25,6 +28,11 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(!isOpen);
+  };
+  const signOut = () => {
+    nookies.destroy(null, "token");
+    nookies.destroy(null, "user");
+    router.replace("/login");
   };
   return (
     <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 md:px-0 duration-200">
@@ -124,24 +132,47 @@ function Header() {
             </div>
           </Link>
 
-          <Link href="/login">
-            <div className="w-8 flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200">
-              <svg
-                className="w-6 m-auto h-6 text-cusblack"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </div>
-          </Link>
+          <button
+            onClick={() => setOpen(!open)}
+            className="w-8 relative flex items-center h-8 rounded-full hover:bg-gray-200 active:bg-gray-300 cursor-pointer duration-200"
+          >
+            <svg
+              className="w-6 m-auto h-6 text-cusblack"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+            {open && (
+              <div className="p-3 bg-white absolute top-11 leading-relaxed right-0 rounded-lg shadow-lg text-xs text-cusblack">
+                {cookie && (
+                  <div className="bg-cusblack text-white p-3 rounded-lg">
+                    <ul>
+                      <li>{cookie.username}</li>
+                      <li>{cookie.email}</li>
+                    </ul>
+                  </div>
+                )}
+                {cookie && (
+                  <div onClick={signOut} className="hover:underline mt-2">
+                    Sign out
+                  </div>
+                )}
+                {!cookie && (
+                  <Link href="/login">
+                    <div className="hover:underline">Sign in</div>
+                  </Link>
+                )}
+              </div>
+            )}
+          </button>
         </div>
       </div>
 
