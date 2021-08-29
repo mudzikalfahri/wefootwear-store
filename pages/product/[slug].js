@@ -29,7 +29,7 @@ export async function getStaticProps({ params }) {
     process.env.NEXT_PUBLIC_APIURL + `/items?slug=${slug}`
   );
   const data = await res.json();
-  const item = data[0];
+  const dataItem = data[0];
 
   if (!data.length) {
     return {
@@ -42,18 +42,24 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      item,
+      dataItem,
     },
     revalidate: 5,
   };
 }
 
-function Product({ item }) {
+function Product({ dataItem }) {
+  const [selectedSize, setSelectedSize] = useState(0);
+  const item = {
+    ...dataItem,
+    selectedSizeProp: dataItem.prop[0].size[selectedSize],
+  };
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(0);
+
   const [added, setAdded] = useState(false);
+  console.log(item);
 
   const handleAdded = () => {
     setAdded(true);

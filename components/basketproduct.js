@@ -25,7 +25,7 @@ function BasketProduct({ item, idx }) {
             <li>Color: {item.color}</li>
             <li>Design ID: {item.category.slug}</li>
             <li>Quantity: {item.quantity}</li>
-            <li>Size: {item.prop[0].size[0]}</li>
+            <li>Size: {item.selectedSizeProp}</li>
           </ul>
         </div>
       </div>
