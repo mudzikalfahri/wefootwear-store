@@ -50,25 +50,25 @@ export async function getStaticProps({ params }) {
 
 function Product({ dataItem }) {
   const [selectedSize, setSelectedSize] = useState(0);
-  const item = {
-    ...dataItem,
-    selectedSizeProp: dataItem.prop[0].size[selectedSize],
-  };
+  const [item, setItem] = useState({});
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
 
   const [added, setAdded] = useState(false);
-  console.log(item);
 
   const handleAdded = () => {
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
 
-  if (!item) return <NotFound />;
+  if (!dataItem) return <NotFound />;
 
   useEffect(() => {
+    setItem({
+      ...dataItem,
+      selectedSizeProp: dataItem.prop[0].size[selectedSize],
+    });
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
