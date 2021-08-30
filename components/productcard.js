@@ -8,7 +8,7 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
   const { size, image } = prop[0];
 
   return (
-    <Link href={"/product/" + slug}>
+    <a href={"/product/" + slug}>
       <div className="rounded-xl cursor-pointer">
         <div className="overflow-hidden rounded-xl relative group">
           <motion.div
@@ -81,7 +81,7 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
           />
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 
