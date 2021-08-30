@@ -5,12 +5,22 @@ import { useSelector } from "react-redux";
 import BasketProduct from "../components/basketproduct";
 import Header from "../components/header";
 import { selectItems } from "../slices/basketSlice";
+import nookies from "nookies";
 
 function Basket() {
   const items = useSelector(selectItems);
   const [loading, setLoading] = useState(true);
+  const [cookie, setCookie] = useState({});
 
   useEffect(() => {
+    const dataCookie = nookies.get();
+    try {
+      setItems(data);
+      setWish(dataWish);
+      setCookie(JSON.parse(dataCookie.user));
+    } catch (err) {
+      setCookie(dataCookie.user);
+    }
     setTimeout(() => setLoading(false), 500);
   }, []);
 
@@ -27,7 +37,7 @@ function Basket() {
           <div className="md:col-span-2 md:mr-5">
             <div className="">
               <div className="shadow-lg rounded-xl bg-cusblack text-white px-5 py-3">
-                <h1 className="font-semibold text-xl mb-1">
+                <h1 className="font-semibold text-lg md:text-xl mb-1">
                   GET FREE SHIPPING WITH MEMBER+ ON EVERY ORDER
                 </h1>
                 <p className="text-xs mb-1 text-gray-100">

@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
 import NotFound from "../404";
 import { addToWishlist } from "../../slices/wishlistSlice";
+import ProductCard from "../../components/productcard";
+import CardSkeleton from "../../components/cardskeleton";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");
@@ -30,6 +32,11 @@ export async function getStaticProps({ params }) {
   );
   const data = await res.json();
   const dataItem = data[0];
+  const resAlso = await fetch(
+    process.env.NEXT_PUBLIC_APIURL +
+      `/items?category.slug=${dataItem?.category.slug}`
+  );
+  const dataAlso = await resAlso.json();
 
   if (!data.length) {
     return {
@@ -43,12 +50,13 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       dataItem,
+      dataAlso,
     },
     revalidate: 5,
   };
 }
 
-function Product({ dataItem }) {
+function Product({ dataItem, dataAlso }) {
   const [selectedSize, setSelectedSize] = useState(0);
   const [item, setItem] = useState({});
   const dispatch = useDispatch();
@@ -62,7 +70,7 @@ function Product({ dataItem }) {
     setTimeout(() => setAdded(false), 2000);
   };
 
-  if (!dataItem) return <NotFound />;
+  if (!dataItem || !dataAlso) return <NotFound />;
 
   useEffect(() => {
     setItem({
@@ -73,9 +81,9 @@ function Product({ dataItem }) {
   }, [selectedSize]);
 
   return (
-    <div className="bg-cusgray min-h-screen">
+    <div className="bg-cusgray min-h-screen pb-10">
       <Header />
-      <div className="max-w-4xl mx-auto h-screen pt-16">
+      <div className="max-w-4xl mx-auto min-h-screen pt-16">
         <div className="flex justify-between place-items-center py-4 px-1 mb-4">
           <Link href="/shop">
             <div className="w-9 h-9 shadow-lg bg-white text-cusblack hover:bg-cusblack hover:text-white duration-200 cursor-pointer rounded-full flex justify-center place-items-center">
@@ -101,7 +109,7 @@ function Product({ dataItem }) {
         {loading ? (
           <ProductSkeleton />
         ) : (
-          <div className="w-full bg-white rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
+          <div className="w-full bg-white md:rounded-2xl shadow-lg md:py-8 md:px-10 md:flex overflow-hidden">
             <div className="photo md:w-1/3">
               <div>
                 <img
@@ -187,7 +195,7 @@ function Product({ dataItem }) {
                     dispatch(addToBasket(item));
                     handleAdded();
                   }}
-                  className="w-4/5 md:w-3/5 bg-cusblack py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100"
+                  className="w-4/5 md:w-3/5 bg-cusblack overflow-hidden py-4 text-white rounded-lg text-sm active:bg-gray-800 duration-100"
                 >
                   {added ? (
                     <motion.div
@@ -252,6 +260,25 @@ function Product({ dataItem }) {
             </div>
           </div>
         )}
+        <div className="text-cusblack p-2 md:px-10 md:py-6 mt-14 bg-white md:rounded-2xl shadow-lg">
+          <p className="mb-4 font-medium text-lg">You may also like:</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
+            {!loading ? (
+              dataAlso
+                .filter((it, idx) => idx < 4 && it.name != item.name)
+                .map(({ slug, ...otherProps }) => (
+                  <ProductCard key={slug} slug={slug} {...otherProps} />
+                ))
+            ) : (
+              <>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

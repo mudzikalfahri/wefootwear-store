@@ -36,7 +36,7 @@ function Header() {
   };
   return (
     <nav className="w-full mx-auto fixed bg-cusgray z-30 py-2 md:px-0 duration-200">
-      <div className="px-2 navtop max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
+      <div className="px-2 navtop relative max-w-6xl mx-auto flex justify-between place-items-center py-1.5">
         <div className="burger flex items-center">
           <button onClick={handleOpen}>
             <svg
@@ -154,20 +154,57 @@ function Header() {
               <div className="p-3 bg-white absolute top-11 leading-relaxed right-0 rounded-lg shadow-lg text-xs text-cusblack">
                 {cookie && (
                   <div className="bg-cusblack text-white p-3 rounded-lg">
-                    <ul>
-                      <li>{cookie.username}</li>
-                      <li>{cookie.email}</li>
+                    <ul className="text-left w-28">
+                      <li className="line-clamp-1">{cookie.username}</li>
+                      <li className="line-clamp-1">{cookie.email}</li>
                     </ul>
                   </div>
                 )}
                 {cookie && (
-                  <div onClick={signOut} className="hover:underline mt-2">
+                  <div
+                    onClick={signOut}
+                    className="hover:underline mt-2 flex place-items-center justify-end"
+                  >
+                    <span>
+                      <svg
+                        className="w-6 h-6 text-cusblack"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                      </svg>
+                    </span>
                     Sign out
                   </div>
                 )}
                 {!cookie && (
                   <Link href="/login">
-                    <div className="hover:underline">Sign in</div>
+                    <div className="hover:underline flex place-items-center">
+                      <span>
+                        <svg
+                          className="w-6 h-6 text-cusblack"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                          />
+                        </svg>
+                      </span>{" "}
+                      Sign In
+                    </div>
                   </Link>
                 )}
               </div>

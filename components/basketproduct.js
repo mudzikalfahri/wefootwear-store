@@ -19,9 +19,9 @@ function BasketProduct({ item, idx }) {
             alt=""
           />
         </motion.div>
-        <div className="ml-3 flex flex-col text-cusblack justify-between py-1">
+        <div className="ml-3 flex flex-col text-cusblack justify-between py-2">
           <p className="font-medium">{item.name}</p>
-          <ul className="text-sm leading-relaxed text-gray-400">
+          <ul className="text-xs md:text-sm leading-relaxed text-gray-400">
             <li>Color: {item.color}</li>
             <li>Design ID: {item.category.slug}</li>
             <li>Quantity: {item.quantity}</li>
@@ -47,10 +47,10 @@ function BasketProduct({ item, idx }) {
             onClick={() => {
               if (item.quantity > 1) dispatch(minusItem(idx));
             }}
-            className="border border-cusblack active:bg-gray-800 rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100"
+            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100"
           >
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -66,10 +66,10 @@ function BasketProduct({ item, idx }) {
           </button>
           <button
             onClick={() => dispatch(plusItem(idx))}
-            className="border border-cusblack active:bg-gray-800 rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
+            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
           >
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ function BasketProduct({ item, idx }) {
           </button>
           <button
             onClick={() => dispatch(removeFromBasket(item))}
-            className="border border-cusblack active:bg-gray-800 rounded-lg p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
+            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
           >
             REMOVE
           </button>
