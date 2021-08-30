@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
 import { useSelector } from "react-redux";
 import { recentCategory } from "../../slices/categorySlice";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/categories");
@@ -50,17 +51,22 @@ function Category({ data, dataItems, dataTypes }) {
       </Layout>
     );
   return (
-    <Layout categories={data} types={dataTypes}>
-      {data_items.length < 1 ? (
-        <p className="col-span-full mx-auto text-sm text-gray-400">
-          No item found
-        </p>
-      ) : (
-        data_items.map(({ slug, ...otherProps }) => (
-          <ProductCard key={slug} slug={slug} {...otherProps} />
-        ))
-      )}
-    </Layout>
+    <>
+      <Head>
+        <title>wefootwear | shop</title>
+      </Head>
+      <Layout categories={data} types={dataTypes}>
+        {data_items.length < 1 ? (
+          <p className="col-span-full mx-auto text-sm text-gray-400">
+            No item found
+          </p>
+        ) : (
+          data_items.map(({ slug, ...otherProps }) => (
+            <ProductCard key={slug} slug={slug} {...otherProps} />
+          ))
+        )}
+      </Layout>
+    </>
   );
 }
 

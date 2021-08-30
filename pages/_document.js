@@ -12,6 +12,11 @@ class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
+            rel="icon"
+            href="https://i.ibb.co/HqH4GXF/logowft.png"
+            type="image/x-icon"
+          />
+          <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="true"

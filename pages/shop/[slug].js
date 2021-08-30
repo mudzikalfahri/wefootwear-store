@@ -5,6 +5,7 @@ import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
 import { recentCategory } from "../../slices/categorySlice";
 import NotFound from "../404";
+import Head from "next/head";
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
@@ -72,17 +73,22 @@ function Category({ data, dataItems, dataTypes }) {
     );
 
   return (
-    <Layout categories={data} types={dataTypes}>
-      {data_items.length > 0 ? (
-        data_items.map(({ slug, ...otherProps }) => (
-          <ProductCard key={slug} slug={slug} {...otherProps} />
-        ))
-      ) : (
-        <p className="col-span-full mx-auto text-sm text-gray-400">
-          No item found
-        </p>
-      )}
-    </Layout>
+    <>
+      <Head>
+        <title>wefootwear | shop</title>
+      </Head>
+      <Layout categories={data} types={dataTypes}>
+        {data_items.length > 0 ? (
+          data_items.map(({ slug, ...otherProps }) => (
+            <ProductCard key={slug} slug={slug} {...otherProps} />
+          ))
+        ) : (
+          <p className="col-span-full mx-auto text-sm text-gray-400">
+            No item found
+          </p>
+        )}
+      </Layout>
+    </>
   );
 }
 
