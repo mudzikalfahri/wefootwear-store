@@ -79,7 +79,7 @@ function Product({ dataItem, dataAlso }) {
       selectedSizeProp: dataItem.prop[0].size[selectedSize],
     });
     setTimeout(() => setLoading(false), 1000);
-  }, [selectedSize]);
+  }, [selectedSize, dataItem]);
 
   return (
     <>

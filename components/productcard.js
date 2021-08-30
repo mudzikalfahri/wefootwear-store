@@ -3,12 +3,13 @@ import Image from "next/image";
 import NumberFormat from "react-number-format";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Router from "next/router";
 
 function ProductCard({ name, slug, color, category, prop, price, type }) {
   const { size, image } = prop[0];
 
   return (
-    <a href={"/product/" + slug}>
+    <div onClick={() => Router.push("/product/" + slug)}>
       <div className="rounded-xl cursor-pointer">
         <div className="overflow-hidden rounded-xl relative group">
           <motion.div
@@ -81,7 +82,7 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
           />
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
