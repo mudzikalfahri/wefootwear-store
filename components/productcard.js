@@ -13,7 +13,7 @@ function ProductCard({ item }) {
   return (
     <div>
       <div className="rounded-xl cursor-pointer">
-        <div className="overflow-hidden rounded-xl relative group">
+        <div className="overflow-hidden cursor-default rounded-xl relative group">
           <motion.div
             initial={{ scale: 1.3, x: 50, opacity: 0 }}
             animate={{ scale: 1, x: 0, opacity: 1 }}
@@ -29,8 +29,8 @@ function ProductCard({ item }) {
               className="rounded-xl w-full h-full bg-cusgray"
             />
           </motion.div>
-          <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
-            <div className="flex overflow-hidden">
+          <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
+            <div className="flex overflow-hidden cursor-pointer">
               <button
                 onClick={() => dispatch(addToWishlist(item))}
                 className="p-2 bg-white hover:bg-gray-100 active:bg-gray-200 rounded-lg"

@@ -40,28 +40,36 @@ function Category({ data, dataItems, dataTypes }) {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  if (loading)
-    return (
-      <Layout categories={data} types={dataTypes}>
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-      </Layout>
-    );
+  // if (loading)
+  //   return (
+  //     <Layout categories={data} types={dataTypes}>
+
+  //     </Layout>
+  //   );
   return (
     <>
       <Head>
         <title>wefootwear | shop</title>
       </Head>
       <Layout categories={data} types={dataTypes}>
-        {data_items.length < 1 ? (
-          <p className="col-span-full mx-auto text-sm text-gray-400">
-            No item found
-          </p>
+        {!loading ? (
+          data_items.length < 1 ? (
+            <p className="col-span-full mx-auto text-sm text-gray-400">
+              No item found
+            </p>
+          ) : (
+            data_items.map((item) => (
+              <ProductCard key={item.slug} item={item} />
+            ))
+          )
         ) : (
-          data_items.map((item) => <ProductCard key={item.slug} item={item} />)
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
         )}
       </Layout>
     </>

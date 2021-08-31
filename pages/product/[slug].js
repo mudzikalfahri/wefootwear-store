@@ -270,7 +270,7 @@ function Product({ dataItem, dataAlso }) {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
               {!loading ? (
                 dataAlso
-                  .filter((it, idx) => idx < 4 && it.name != item.name)
+                  .filter((it, idx) => idx < 5 && it.name != item.name)
                   .map((data) => <ProductCard key={data.slug} item={data} />)
               ) : (
                 <>

@@ -61,29 +61,30 @@ function Category({ data, dataItems, dataTypes }) {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  if (loading)
-    return (
-      <Layout categories={data} types={dataTypes}>
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-      </Layout>
-    );
-
   return (
     <>
       <Head>
         <title>wefootwear | shop</title>
       </Head>
       <Layout categories={data} types={dataTypes}>
-        {data_items.length > 0 ? (
-          data_items.map((item) => <ProductCard key={item.slug} item={item} />)
+        {!loading ? (
+          data_items.length > 0 ? (
+            data_items.map((item) => (
+              <ProductCard key={item.slug} item={item} />
+            ))
+          ) : (
+            <p className="col-span-full mx-auto text-sm text-gray-400">
+              No item found
+            </p>
+          )
         ) : (
-          <p className="col-span-full mx-auto text-sm text-gray-400">
-            No item found
-          </p>
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
         )}
       </Layout>
     </>

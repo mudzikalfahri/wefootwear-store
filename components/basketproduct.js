@@ -3,32 +3,35 @@ import NumberFormat from "react-number-format";
 import { useDispatch } from "react-redux";
 import { removeFromBasket, plusItem, minusItem } from "../slices/basketSlice";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function BasketProduct({ item, idx }) {
   const dispatch = useDispatch();
   return (
     <div className="product md:flex justify-between mb-6">
-      <div className="image md:flex">
-        <motion.div
-          initial={{ scale: 1.5, x: 50, y: -50, opacity: 0 }}
-          animate={{ scale: 1, x: 0, y: 0, opacity: 1 }}
-        >
-          <img
-            className="w-full md:w-32 h-32 object-cover rounded-xl"
-            src={item.prop[0].image[0]}
-            alt=""
-          />
-        </motion.div>
-        <div className="ml-3 flex flex-col text-cusblack justify-between py-2">
-          <p className="font-medium">{item.name}</p>
-          <ul className="text-xs md:text-sm leading-relaxed text-gray-400">
-            <li>Color: {item.color}</li>
-            <li>Design ID: {item.category.slug}</li>
-            <li>Quantity: {item.quantity}</li>
-            <li>Size: {item.selectedSizeProp}</li>
-          </ul>
+      <Link href={"/product/" + item.slug}>
+        <div className="image md:flex cursor-pointer">
+          <motion.div
+            initial={{ scale: 1.5, x: 50, y: -50, opacity: 0 }}
+            animate={{ scale: 1, x: 0, y: 0, opacity: 1 }}
+          >
+            <img
+              className="w-full md:w-32 h-32 object-cover rounded-xl"
+              src={item.prop[0].image[0]}
+              alt=""
+            />
+          </motion.div>
+          <div className="ml-3 flex flex-col text-cusblack justify-between py-2">
+            <p className="font-medium">{item.name}</p>
+            <ul className="text-xs md:text-sm leading-relaxed text-gray-400">
+              <li>Color: {item.color}</li>
+              <li>Design ID: {item.category.slug}</li>
+              <li>Quantity: {item.quantity}</li>
+              <li>Size: {item.selectedSizeProp}</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="flex flex-col justify-between py-1">
         <NumberFormat
           value={item.price}
