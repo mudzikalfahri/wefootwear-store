@@ -79,9 +79,7 @@ function Category({ data, dataItems, dataTypes }) {
       </Head>
       <Layout categories={data} types={dataTypes}>
         {data_items.length > 0 ? (
-          data_items.map(({ slug, ...otherProps }) => (
-            <ProductCard key={slug} slug={slug} {...otherProps} />
-          ))
+          data_items.map((item) => <ProductCard key={item.slug} item={item} />)
         ) : (
           <p className="col-span-full mx-auto text-sm text-gray-400">
             No item found

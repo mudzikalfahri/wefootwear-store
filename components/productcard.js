@@ -1,15 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Router from "next/router";
+import { useDispatch } from "react-redux";
+import { addToWishlist } from "../slices/wishlistSlice";
 
-function ProductCard({ name, slug, color, category, prop, price, type }) {
-  const { size, image } = prop[0];
+function ProductCard({ item }) {
+  const { size, image } = item.prop[0];
+  const dispatch = useDispatch();
 
   return (
-    <div onClick={() => Router.push("/product/" + slug)}>
+    <div>
       <div className="rounded-xl cursor-pointer">
         <div className="overflow-hidden rounded-xl relative group">
           <motion.div
@@ -29,23 +31,10 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
           </motion.div>
           <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center">
             <div className="flex overflow-hidden">
-              <div className="p-2 bg-white mr-1 rounded-lg ">
-                <svg
-                  className="w-6 h-6 text-cusblack m-auto"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-              </div>
-              <div className="p-2 bg-white rounded-lg">
+              <button
+                onClick={() => dispatch(addToWishlist(item))}
+                className="p-2 bg-white hover:bg-gray-100 active:bg-gray-200 rounded-lg"
+              >
                 <svg
                   className="w-6 m-auto h-6 text-cusblack"
                   fill="none"
@@ -60,16 +49,19 @@ function ProductCard({ name, slug, color, category, prop, price, type }) {
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                   />
                 </svg>
-              </div>
+              </button>
             </div>
           </div>
         </div>
-        <div className="px-2 py-2">
-          <p className="text-sm line-clamp-1">{name}</p>
-          <p className="text-xs my-2 text-gray-400">{color}</p>
+        <div
+          onClick={() => Router.push("/product/" + item.slug)}
+          className="px-2 py-2"
+        >
+          <p className="text-sm line-clamp-1">{item.name}</p>
+          <p className="text-xs my-2 text-gray-400">{item.color}</p>
           {/* <p className="text-sm font-semibold">Rp {price}</p> */}
           <NumberFormat
-            value={price}
+            value={item.price}
             className="text-sm font-semibold text-cusblack"
             displayType={"text"}
             thousandSeparator={true}

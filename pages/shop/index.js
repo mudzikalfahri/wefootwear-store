@@ -61,9 +61,7 @@ function Category({ data, dataItems, dataTypes }) {
             No item found
           </p>
         ) : (
-          data_items.map(({ slug, ...otherProps }) => (
-            <ProductCard key={slug} slug={slug} {...otherProps} />
-          ))
+          data_items.map((item) => <ProductCard key={item.slug} item={item} />)
         )}
       </Layout>
     </>

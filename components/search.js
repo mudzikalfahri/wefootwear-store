@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Router from "next/router";
 
 function Search() {
   const [input, setInput] = useState("");
@@ -20,12 +21,12 @@ function Search() {
         type="text"
         placeholder="Search product"
       />
-      <div className="p-5 shadow-lg hidden duration-100 group-focus-within:inline top-11 bg-white absolute rounded-2xl w-full z-20">
+      <div className="p-5 shadow-lg hidden duration-100 group-focus-within:inline group-active:inline top-11 bg-white absolute rounded-2xl w-full z-20">
         {data.length ? (
           data
             .filter((i, idx) => idx < 4)
             .map((item, idx) => (
-              <a href={"/product/" + item.slug}>
+              <div onClick={() => Router.push("/product/" + item.slug)}>
                 <div
                   key={idx}
                   className="p-2 flex place-items-center cursor-pointer text-xs font-light text-cusblack hover:bg-gray-100 active:bg-gray-200"
@@ -39,7 +40,7 @@ function Search() {
                   </span>
                   {item.name}
                 </div>
-              </a>
+              </div>
             ))
         ) : (
           <p className="text-xs text-cusblack font-light">No item found</p>
