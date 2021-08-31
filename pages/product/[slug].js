@@ -271,9 +271,7 @@ function Product({ dataItem, dataAlso }) {
               {!loading ? (
                 dataAlso
                   .filter((it, idx) => idx < 4 && it.name != item.name)
-                  .map(({ slug, ...otherProps }) => (
-                    <ProductCard key={slug} slug={slug} {...otherProps} />
-                  ))
+                  .map((data) => <ProductCard key={data.slug} item={data} />)
               ) : (
                 <>
                   <CardSkeleton />
