@@ -12,7 +12,6 @@ import ProductCard from "../../components/productcard";
 import CardSkeleton from "../../components/cardskeleton";
 import Head from "next/head";
 import Skeleton from "react-loading-skeleton";
-import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");

@@ -7,6 +7,9 @@ import Header from "../components/header";
 import { selectItems } from "../slices/basketSlice";
 import nookies from "nookies";
 import Head from "next/head";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+const stripePromise = loadStripe(process.env.publishableKey);
 
 function Basket() {
   const items = useSelector(selectItems);
@@ -16,14 +19,26 @@ function Basket() {
   useEffect(() => {
     const dataCookie = nookies.get();
     try {
-      setItems(data);
-      setWish(dataWish);
       setCookie(JSON.parse(dataCookie.user));
     } catch (err) {
       setCookie(dataCookie.user);
     }
     setTimeout(() => setLoading(false), 500);
   }, []);
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+    const checkoutSession = await axios.post("/api/checkoutsession", {
+      items: items,
+      email: cookie.email,
+    });
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result.error) alert(result.error.message);
+  };
 
   if (!items.length && loading == true) {
     return (
@@ -150,7 +165,10 @@ function Basket() {
                   />
                 </div>
 
-                <button className="py-2 px-3 text-white w-full mt-6 rounded-lg bg-cusblack flex justify-center place-items-center">
+                <button
+                  onClick={createCheckoutSession}
+                  className="py-2 px-3 text-white w-full mt-6 rounded-lg bg-cusblack flex justify-center place-items-center"
+                >
                   CHECKOUT
                   <span>
                     <svg

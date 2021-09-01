@@ -122,7 +122,7 @@ function Header() {
               {wish.length > 0 ? (
                 <div
                   className={`flex
-                } absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
+                absolute text-xs font-light justify-center text-white text-center w-4 h-4 bg-cusblack rounded-full bottom-0 right-0`}
                 >
                   {wish.length}
                 </div>
