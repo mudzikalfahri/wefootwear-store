@@ -11,6 +11,8 @@ import { addToWishlist } from "../../slices/wishlistSlice";
 import ProductCard from "../../components/productcard";
 import CardSkeleton from "../../components/cardskeleton";
 import Head from "next/head";
+import Skeleton from "react-loading-skeleton";
+import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.NEXT_PUBLIC_APIURL + "/items");
@@ -63,7 +65,6 @@ function Product({ dataItem, dataAlso }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [imgSelected, setImgSelected] = useState(0);
-
   const [added, setAdded] = useState(false);
 
   const handleAdded = () => {
@@ -266,12 +267,20 @@ function Product({ dataItem, dataAlso }) {
             </div>
           )}
           <div className="text-cusblack p-2 md:px-10 md:py-6 mt-14 bg-white md:rounded-2xl shadow-lg">
-            <p className="mb-4 font-medium text-lg">You may also like:</p>
+            {!loading ? (
+              <p className="mb-4 font-medium text-lg">You may also like:</p>
+            ) : (
+              <Skeleton className="h-6 mb-4" />
+            )}
+
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
               {!loading ? (
                 dataAlso
-                  .filter((it, idx) => idx < 5 && it.name != item.name)
-                  .map((data) => <ProductCard key={data.slug} item={data} />)
+                  .filter((it, idx) => it.name != item.name)
+                  .map((data, idx) => {
+                    if (idx < 4)
+                      return <ProductCard key={data.slug} item={data} />;
+                  })
               ) : (
                 <>
                   <CardSkeleton />
