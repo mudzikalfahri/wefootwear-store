@@ -50,7 +50,7 @@ function BasketProduct({ item, idx }) {
             onClick={() => {
               if (item.quantity > 1) dispatch(minusItem(idx));
             }}
-            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100"
+            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100"
           >
             <svg
               className="w-4 h-4"
@@ -69,7 +69,7 @@ function BasketProduct({ item, idx }) {
           </button>
           <button
             onClick={() => dispatch(plusItem(idx))}
-            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
+            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 mx-1"
           >
             <svg
               className="w-4 h-4"
@@ -88,7 +88,7 @@ function BasketProduct({ item, idx }) {
           </button>
           <button
             onClick={() => dispatch(removeFromBasket(item))}
-            className="border border-cusblack active:bg-gray-800 rounded-md p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
+            className="border border-cusblack active:bg-gray-800 rounded-sm p-1 hover:bg-cusblack hover:text-white duration-100 text-xs px-2 font-medium"
           >
             REMOVE
           </button>

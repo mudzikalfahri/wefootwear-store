@@ -105,6 +105,8 @@ export default function Home() {
             showThumbs={false}
             transitionTime={500}
             interval={3000}
+            stopOnHover={false}
+            swipeable={false}
           >
             <div>
               <img

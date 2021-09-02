@@ -74,6 +74,7 @@ function Product({ dataItem, dataAlso }) {
   if (!dataItem || !dataAlso) return <NotFound />;
 
   useEffect(() => {
+    setLoading(true);
     setItem({
       ...dataItem,
       selectedSizeProp: dataItem.prop[0].size[selectedSize],
@@ -108,7 +109,7 @@ function Product({ dataItem, dataAlso }) {
                 </svg>
               </div>
             </Link>
-            <h4 className="text-cusblack text-md">Detailed Product</h4>
+            <h4 className="text-cusblack text-md">Product Details</h4>
             <div className="w-8"></div>
           </div>
           {loading ? (

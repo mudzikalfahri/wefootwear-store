@@ -9,6 +9,7 @@ import nookies from "nookies";
 import Head from "next/head";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import Router from "next/router";
 const stripePromise = loadStripe(process.env.publishableKey);
 
 function Basket() {
@@ -27,6 +28,10 @@ function Basket() {
   }, []);
 
   const createCheckoutSession = async () => {
+    if (!cookie) {
+      Router.push("/login");
+      return;
+    }
     const stripe = await stripePromise;
     const checkoutSession = await axios.post("/api/checkoutsession", {
       items: items,
@@ -42,7 +47,9 @@ function Basket() {
 
   if (!items.length && loading == true) {
     return (
-      <div className="w-full min-h-screen relative bg-cusgray pb-10"></div>
+      <div className="w-full min-h-screen relative bg-cusgray pb-10">
+        <Header />
+      </div>
     );
   }
   return (

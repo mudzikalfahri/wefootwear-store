@@ -19,6 +19,7 @@ function ShopCarousel() {
         showStatus={false}
         showArrows={false}
         showThumbs={false}
+        swipeable={true}
         transitionTime={500}
         interval={4000}
         className="rounded-2xl overflow-hidden shop shadow-lg"
