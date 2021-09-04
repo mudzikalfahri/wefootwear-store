@@ -19,6 +19,15 @@
 - [Stripe](https://stripe.com)
 - Vercel (deployment)
 
+**Some features**:
+
+- Sign up and sign In authentication
+- Incremental Static Regeneration on product page
+- Add or remove product from basket or wishlist page
+- local storage integration
+- stripe for processing the payment
+- order page to display successful orders
+
 ### Clone Repository
 
 ```
@@ -34,5 +43,3 @@ HOST
 STRIPE_SECRET_KEY
 STRIPE_PUBLIC_KEY
 ```
-
-## Deploy using vercel
