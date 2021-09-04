@@ -26,8 +26,8 @@ function OrderCard({ order }) {
       </div>
 
       <div className="flex flex-col my-1">
-        <div className="flex mt-2">
-          <div className="w-3/4 border-r border-gray-300">
+        <div className="md:flex mt-2">
+          <div className="md:w-3/4 border-b md:border-b-0 md:border-r border-gray-300">
             {order.items.map((it, idx) => (
               <div key={idx} className="flex mb-2">
                 <img
@@ -56,8 +56,8 @@ function OrderCard({ order }) {
               </div>
             ))}
           </div>
-          <div className="w-1/4 text-xs text-cusblack flex flex-col justify-center place-items-center">
-            <p className="text-gray-400 mb-1">Total Amount :</p>
+          <div className="md:w-1/4 mt-2 md:mt-0 text-xs text-cusblack flex md:flex-col justify-center place-items-center">
+            <p className="text-gray-400 md:mb-1">Total Amount :</p>
             <NumberFormat
               value={order.amount}
               className="font-semibold"

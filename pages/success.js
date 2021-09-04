@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import Header from "../components/header";
 import Head from "next/head";
+import Router from "next/router";
 
 function Success() {
   return (
@@ -41,7 +42,10 @@ function Success() {
                   should receive a confirmation from us shortly. Click the
                   button below to see your orders
                 </p>
-                <button className="py-2 px-4 text-xs hover:bg-white hover:text-cusblack duration-200 hover:border-cusblack border rounded-lg my-2 bg-cusblack text-white">
+                <button
+                  onClick={() => Router.push("/orders")}
+                  className="py-2 px-4 text-xs hover:bg-white hover:text-cusblack duration-200 hover:border-cusblack border rounded-lg my-2 bg-cusblack text-white"
+                >
                   See My Orders
                 </button>
               </div>
