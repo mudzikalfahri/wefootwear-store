@@ -14,7 +14,7 @@
 
 - [Next js](https://nextjs.org/) (React Framework)
 - [TailwindCSS](https://tailwindcss.com/)
-- Stapi CMS(https://strapi.io/)
+- [Strapi CMS](https://strapi.io/)
 - [MongoDB](https://www.mongodb.com/cloud/atlas)
 - [Stripe](https://stripe.com)
 - Vercel (deployment)
