@@ -1,6 +1,6 @@
 # WEFOOTWEAR STORE
 
-###Full Stack E-commerce Website for Footwear Store.
+### Full Stack E-commerce Website for Footwear Store.
 
 ## Screenshots
 
@@ -8,16 +8,7 @@
 
 ## About The Project
 
-**Next.js E-commerce** is an example online shop built with React.js and Keystone.js.
-
-### Built With
-
-- [Next.js](https://nextjs.org/)
-- [Keystone.js](https://www.keystonejs.com/)
-- [Mongo DB](https://www.mongodb.com/cloud/atlas)
-- [Chakra UI](https://chakra-ui.com/)
-- [Stripe](https://stripe.com)
-- [Mailgun](https://mailgun.com)
+**Wefootwear E-commerce** is an example online shop built with Next js.
 
 ## Stacks
 
