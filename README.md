@@ -1,29 +1,45 @@
-# Next.js + Tailwind CSS Example
+# WEFOOTWEAR STORE
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+### Full Stack E-commerce Website for Footwear Store.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+## Screenshots
 
-## Preview
+![Thumbnail](https://i.ibb.co/bLb6DpL/wefootwear-ss-min.jpg)
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## About The Project
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+**Wefootwear E-commerce** is an example online shop built with Next js.
 
-## Deploy your own
+## Stacks
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+- [Next js](https://nextjs.org/) (React Framework)
+- [TailwindCSS](https://tailwindcss.com/)
+- Stapi CMS(https://strapi.io/)
+- [MongoDB](https://www.mongodb.com/cloud/atlas)
+- [Stripe](https://stripe.com)
+- Vercel (deployment)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+**Some features**:
 
-## How to use
+- Sign up and sign In authentication
+- Incremental Static Regeneration on product page
+- Add or remove product from basket or wishlist page
+- local storage integration
+- stripe for processing the payment
+- order page to display successful orders
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+### Clone Repository
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+```
+git clone https://github.com/mudzikalfahri/wefootwear-ecommerce.git
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+#### Add .env.local file to root client directory
+
+```
+NEXT_PUBLIC_APIURL
+STRIPE_SIGNING_SECRET
+HOST
+STRIPE_SECRET_KEY
+STRIPE_PUBLIC_KEY
+```
