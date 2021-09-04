@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "wefootwear-68c74",
+  "private_key_id": "b93a99d5adb7c97f375d397d1a2b68ed145f0714",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCpoEX1t/euTXaf\nyDnAflweS1TUR/6kUqUfI4Q/o2Dbwk+Rn6U8yLltVrnUxHlDZ8c2GcB5DbhFRyWB\nsFfbyD518CQ5zo/vkBn3iPjPWBBr/FtrmLver5C+aNd15P6fLgE5/CsKs5OsMusG\nZDQATuty+41iSJJwyyhy3J7nvWDDDR/yqKdsUTag9QKdmihpg0sn23AX6O0ri/S7\nDgXoZ1DZJKYkdwq+AHlndSQU21yKqbufrOku7a011nI+Vc4imwp4K5Nm2I7mtQnM\nzwsFJsIung7n/l6KdRq07SS7Vc3eg8jly9BkUtbeaAXzMK7N9P8B3IqgCF4L5E3d\nQYWo9Z4LAgMBAAECggEAE8u46RXrhDOqyLeU8yphVRu/g6Kp921kXdTxmyeq/G/v\nL0nX/oGtD4iT2V6F3wrzzGmG9S8CYVC4nNZX+otNAXXhab7550sEQhzXGgOSBGLd\nccTPsAusiGbd4Pa04cjRqyhgXDhcNI12BjdC0QJk0fTE1EKEl0CZBjFJzjZjXiqE\n4sDpZwR/HD44xVd7zv1dRg4kWvjHiWRsF7NhBRixik6WXHz9b1EFpIR6uSdblW8h\n78OltY2Pk5Tm9UNvuJQsLbVY9aXTWUG2tOLmRz7NpmGMojL8U0qgk4IH0f9ztARh\n5JkRIyBfKEG0C2Cnx3LynTLNAvX5lHGYqXDGoTkEEQKBgQDd7AwCp2zZqNWveN6J\nobPEKEYbGzsu0reXLPkbKEcNogfdFr76Q4d16AQdTvbxvNIoeOFqsBiXqopBzaHt\nG9dkWMNxQ5HXKtYfM9A6VBZYeZ4ru8cqhMJ6bygOVV9sUrPaGApgK7g7ZaXQSJrT\nE/kNDx8wLy/8G4xZ37vB8fy6GQKBgQDDrGyvZJ7lCflKKlvU1QD0qKTzCO+TaJ5F\nS5pdjW0xHlEq/9bFdXheL+X6ep+nTg7YjWBNk3ERRCTR7DtwP/KyCAPXjXoS86HG\n0aoVIr3A3DingHE5l27+/e5kLHA6C6ASYmoTa8DgvIJhf/yFVV4Gczjmb+W4M+qT\njAdisUhlwwKBgC9epE2ouTZYsIwNC8trBbk4M4azsFVVSzTst5uRZGFHldAee9Nl\nuLN1O/OZmGKPQHi9HLiuMAGnuG1FXGwFRlu4CrfRiX7ZOO1eHPNmYYKvKxEAuwmb\nXvvNYEp29LBlkthZy1Ut39xl3Rfxd4LYv4+HC8w4NlDk/Hdup2BFrAF5AoGAWl44\nd6xVwdugWQNFE/8niNaWD3QSCRco+UHYUdpuEmA5Bk3Pp7P/2ifu44ZcU402SAbK\n8ijk8B9zjcu3C7lM4bHX7GX3eecw0Lyl+0rnLbnHJHyqTfnFFli6D2OClRwnWjY/\nXSbHlkMZR+QvAHkTipEON0Z4ZmD7thbWllrf37cCgYB7ne/4NLSOwgt034GgGCo3\n9/x8DoRw4KO4Rsf4qgPfJjGtzCGsMpoT86SDqIPpz8XpgpX5/48l0bh58zQIl8K0\nsWWtYDvyZ09/LlDSzn4XVUTWMTJu6s8+AR+gLiYxxJfIVRoTGCoaRMrlLOIFXL8V\nWiAhJxo8Db145S8fMz8n6Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-g779b@wefootwear-68c74.iam.gserviceaccount.com",
+  "client_id": "115524336642708944609",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g779b%40wefootwear-68c74.iam.gserviceaccount.com"
+}

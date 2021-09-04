@@ -58,7 +58,7 @@ function Login() {
   return (
     <>
       <Head>
-        <title>wefootwear | login</title>
+        <title>wefootwear | Login</title>
       </Head>
       <div className="w-full min-h-screen relative bg-cusgray pb-10 flex justify-center place-items-center">
         {loading && (

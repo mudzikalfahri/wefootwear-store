@@ -28,7 +28,7 @@ function ProductCard({ item }) {
             className="rounded-xl w-full h-full bg-cusgray"
           />
         </motion.div>
-        <div className="hidden absolute h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
+        <div className="hidden absolute rounded-xl h-full w-full bg-gray-500 backdrop-filter backdrop-blur-sm bg-opacity-30 top-0 group group-hover:flex justify-center place-items-center z-10">
           <div className="flex overflow-hidden cursor-pointer">
             <button
               onClick={() => dispatch(addToWishlist(item))}

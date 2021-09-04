@@ -11,7 +11,9 @@ export async function getStaticProps() {
   const data = await res.json();
   const resTypes = await fetch(process.env.NEXT_PUBLIC_APIURL + "/types");
   const dataTypes = await resTypes.json();
-  const resItems = await fetch(process.env.NEXT_PUBLIC_APIURL + `/items`);
+  const resItems = await fetch(
+    process.env.NEXT_PUBLIC_APIURL + `/items?_sort=published_at:DESC`
+  );
   const dataItems = await resItems.json();
 
   return {
@@ -49,7 +51,7 @@ function Category({ data, dataItems, dataTypes }) {
   return (
     <>
       <Head>
-        <title>wefootwear | shop</title>
+        <title>wefootwear | Shop</title>
       </Head>
       <Layout categories={data} types={dataTypes}>
         {!loading ? (

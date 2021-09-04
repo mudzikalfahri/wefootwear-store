@@ -55,7 +55,7 @@ function Basket() {
   return (
     <>
       <Head>
-        <title>wefootwear | basket</title>
+        <title>wefootwear | Basket</title>
       </Head>
       <div className="w-full min-h-screen relative bg-cusgray pb-10">
         <Header />

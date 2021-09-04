@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>wefootwear - home</title>
+        <title>wefootwear | Home</title>
       </Head>
       <div className="w-full h-screen relative">
         <Header />

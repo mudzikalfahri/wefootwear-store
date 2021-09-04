@@ -80,12 +80,12 @@ function Product({ dataItem, dataAlso }) {
       selectedSizeProp: dataItem.prop[0].size[selectedSize],
     });
     setTimeout(() => setLoading(false), 1000);
-  }, [selectedSize, dataItem]);
+  }, [dataItem, selectedSize]);
 
   return (
     <>
       <Head>
-        <title>wefootwear | {item.name}</title>
+        <title>{item.name}</title>
       </Head>
       <div className="bg-cusgray min-h-screen pb-10">
         <Header />

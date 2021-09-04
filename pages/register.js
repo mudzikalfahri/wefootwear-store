@@ -57,7 +57,7 @@ function Register() {
   return (
     <>
       <Head>
-        <title>wefootwear | register</title>
+        <title>wefootwear | Register</title>
       </Head>
       <motion.div
         initial={{ opacity: 0 }}
