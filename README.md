@@ -2,8 +2,6 @@
 
 ### Full Stack E-commerce Website for Footwear Store.
 
-## Screenshots
-
 ![Thumbnail](https://i.ibb.co/bLb6DpL/wefootwear-ss-min.jpg)
 
 ## About The Project
@@ -14,7 +12,7 @@
 
 - [Next js](https://nextjs.org/) (React Framework)
 - [TailwindCSS](https://tailwindcss.com/)
-- Stapi CMS(https://strapi.io/)
+- [Strapi CMS](https://strapi.io/)
 - [MongoDB](https://www.mongodb.com/cloud/atlas)
 - [Stripe](https://stripe.com)
 - Vercel (deployment)
@@ -24,9 +22,10 @@
 - Sign up and sign In authentication
 - Incremental Static Regeneration on product page
 - Add or remove product from basket or wishlist page
-- local storage integration
-- stripe for processing the payment
-- order page to display successful orders
+- Live search product
+- stripe for processing the payment (test mode) 
+(use card number: 4242 4242 4242 4242 to complete the payment)
+- order page to display successful order
 
 ### Clone Repository
 
