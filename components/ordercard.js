@@ -3,6 +3,7 @@ import NumberFormat from "react-number-format";
 import moment from "moment";
 
 function OrderCard({ order }) {
+  console.log(order);
   return (
     <div className="py-2 px-4 rounded-lg shadow-lg mb-2">
       <div className="flex place-items-center text-xs text-cusblack py-1">
@@ -59,7 +60,10 @@ function OrderCard({ order }) {
           <div className="md:w-1/4 mt-2 md:mt-0 text-xs text-cusblack flex md:flex-col justify-center place-items-center">
             <p className="text-gray-400 md:mb-1">Total Amount :</p>
             <NumberFormat
-              value={order.amount}
+              value={order.items.reduce(
+                (val, item) => val + item.amount_subtotal * item.quantity * 100,
+                0
+              )}
               className="font-semibold"
               displayType={"text"}
               thousandSeparator={true}

@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/header";
 import Head from "next/head";
 import Router from "next/router";
+import { useDispatch } from "react-redux";
+import { deleteFromBasket } from "../slices/basketSlice";
 
 function Success() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(deleteFromBasket());
+  }, []);
   return (
     <>
       <Head>

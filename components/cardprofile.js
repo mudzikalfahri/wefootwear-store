@@ -37,7 +37,15 @@ function CardProfile({ session, orders }) {
         <div className="text-center text-xs">
           <p className="text-cusblack mb-1">Money Spent :</p>
           <NumberFormat
-            value={orders.reduce((val, order) => val + order.amount, 0)}
+            value={orders.reduce(
+              (val, order) =>
+                val +
+                order.items.reduce(
+                  (v, i) => v + i.amount_subtotal * i.quantity * 100,
+                  0
+                ),
+              0
+            )}
             className="text-gray-400 text-xs"
             displayType={"text"}
             thousandSeparator={true}
