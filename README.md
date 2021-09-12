@@ -7,6 +7,7 @@
 ## About The Project
 
 **Wefootwear E-commerce** is an example online shop built with Next js.
+[demo](https://wefootwear.vercel.app/)
 
 ## Stacks
 
