@@ -40,10 +40,7 @@ function CardProfile({ session, orders }) {
             value={orders.reduce(
               (val, order) =>
                 val +
-                order.items.reduce(
-                  (v, i) => v + i.amount_subtotal * i.quantity * 100,
-                  0
-                ),
+                order.items.reduce((v, i) => v + i.amount_subtotal * 100, 0),
               0
             )}
             className="text-gray-400 text-xs"
