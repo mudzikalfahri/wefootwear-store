@@ -27,14 +27,25 @@ export async function getStaticProps() {
 }
 
 function Category({ data, dataItems, dataTypes }) {
+  const [sort, setSort] = useState(0);
   const recent_category = useSelector(recentCategory);
-  const data_items = dataItems.filter((item) => {
-    if (recent_category.length > 0) {
-      return item.type.name == recent_category;
-    } else {
+  const data_items = dataItems
+    .filter((item) => {
+      if (recent_category.length > 0) {
+        return item.type.name == recent_category;
+      } else {
+        return true;
+      }
+    })
+    .sort((a, b) => {
+      if (sort === 1) {
+        return a.price - b.price;
+      }
+      if (sort === 2) {
+        return b.price - a.price;
+      }
       return true;
-    }
-  });
+    });
 
   const [loading, setLoading] = useState(true);
 
@@ -42,18 +53,12 @@ function Category({ data, dataItems, dataTypes }) {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  // if (loading)
-  //   return (
-  //     <Layout categories={data} types={dataTypes}>
-
-  //     </Layout>
-  //   );
   return (
     <>
       <Head>
         <title>wefootwear | Shop</title>
       </Head>
-      <Layout categories={data} types={dataTypes}>
+      <Layout categories={data} setSort={setSort} types={dataTypes}>
         {!loading ? (
           data_items.length < 1 ? (
             <p className="col-span-full mx-auto text-sm text-gray-400">

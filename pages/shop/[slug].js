@@ -47,15 +47,25 @@ function Category({ data, dataItems, dataTypes }) {
   if (!dataItems || !data) {
     return <NotFound />;
   }
-
+  const [sort, setSort] = useState(0);
   const recent_category = useSelector(recentCategory);
-  const data_items = dataItems.filter((item) => {
-    if (recent_category.length > 0) {
-      return item.type.name == recent_category;
-    } else {
+  const data_items = dataItems
+    .filter((item) => {
+      if (recent_category.length > 0) {
+        return item.type.name == recent_category;
+      } else {
+        return true;
+      }
+    })
+    .sort((a, b) => {
+      if (sort === 1) {
+        return a.price - b.price;
+      }
+      if (sort === 2) {
+        return b.price - a.price;
+      }
       return true;
-    }
-  });
+    });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -67,7 +77,7 @@ function Category({ data, dataItems, dataTypes }) {
       <Head>
         <title>wefootwear | Shop</title>
       </Head>
-      <Layout categories={data} types={dataTypes}>
+      <Layout categories={data} setSort={setSort} types={dataTypes}>
         {!loading ? (
           data_items.length > 0 ? (
             data_items.map((item) => (

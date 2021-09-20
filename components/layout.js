@@ -4,8 +4,9 @@ import ShopCarousel from "./shopcarousel";
 import SideCategory from "./sidecategory";
 import TopCategory from "./topcategory";
 
-function Layout({ children, categories, types }) {
+function Layout({ children, categories, types, setSort }) {
   const [open, setOpen] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
   return (
     <div className="w-full min-h-screen bg-cusgray">
       <Header />
@@ -41,8 +42,86 @@ function Layout({ children, categories, types }) {
           </div>
           <div className="col-span-4 md:col-span-4 lg:col-span-3 flex flex-col py-4 mx-2 md:mx-0">
             <ShopCarousel />
-            <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 p-5">
-              <div className=""></div>
+            <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 px-5 py-4">
+              <div className="mb-3">
+                <div className="flex justify-end place-items-center text-gray-700 text-sm relative">
+                  <svg
+                    className="w-6 h-6 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+                    />
+                  </svg>
+                  <button
+                    onClick={() => setSortOpen(!sortOpen)}
+                    className="flex place-items-center hover:bg-gray-100 py-1 px-2 rounded-md active:bg-gray-200"
+                  >
+                    Sort
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    className={`${
+                      sortOpen ? "absolute" : "hidden"
+                    } top-7 shadow-lg rounded-md text-sm right-0 bg-white text-gray-500 z-20 px-2 py-2`}
+                  >
+                    <ul>
+                      <li className="py-1 px-2 rounded-sm hover:bg-gray-100 active:bg-gray-200">
+                        <button
+                          className="w-full"
+                          onClick={() => {
+                            setSort(0);
+                            setSortOpen(false);
+                          }}
+                        >
+                          Newest
+                        </button>
+                      </li>
+                      <li className="py-1 px-2 rounded-sm hover:bg-gray-100 active:bg-gray-200">
+                        <button
+                          className="w-full"
+                          onClick={() => {
+                            setSort(1);
+                            setSortOpen(false);
+                          }}
+                        >
+                          Price low to high
+                        </button>
+                      </li>
+                      <li className="py-1 px-2 rounded-sm hover:bg-gray-100 active:bg-gray-200">
+                        <button
+                          className="w-full"
+                          onClick={() => {
+                            setSort(2);
+                            setSortOpen(false);
+                          }}
+                        >
+                          Price high to low
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
                 {children}
               </div>

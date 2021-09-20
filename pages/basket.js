@@ -45,13 +45,6 @@ function Basket() {
     if (result.error) alert(result.error.message);
   };
 
-  if (!items.length && loading == true) {
-    return (
-      <div className="w-full min-h-screen relative bg-cusgray pb-10">
-        <Header />
-      </div>
-    );
-  }
   return (
     <>
       <Head>
@@ -75,7 +68,7 @@ function Basket() {
                 <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg overflow-hidden">
                   <p>Your Basket ({items.length})</p>
                   <div className="pt-5 pb-2">
-                    {items.length > 0 ? (
+                    {items?.length > 0 ? (
                       items.map((item, idx) => (
                         <BasketProduct idx={idx} key={item.slug} item={item} />
                       ))
@@ -173,6 +166,7 @@ function Basket() {
                 </div>
 
                 <button
+                  disabled={!items.length}
                   onClick={createCheckoutSession}
                   className="py-2 px-3 text-white w-full mt-6 rounded-lg bg-cusblack flex justify-center place-items-center"
                 >
