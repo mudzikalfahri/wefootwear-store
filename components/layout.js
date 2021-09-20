@@ -6,9 +6,10 @@ import TopCategory from "./topcategory";
 
 function Layout({ children, categories, types, setSort }) {
   const [open, setOpen] = useState(false);
+  const [grid, setGrid] = useState(4);
   const [sortOpen, setSortOpen] = useState(false);
   return (
-    <div className="w-full min-h-screen bg-cusgray">
+    <div className="w-full min-h-screen bg-cusgray pb-10">
       <Header />
       <button
         onClick={() => setOpen(!open)}
@@ -44,25 +45,65 @@ function Layout({ children, categories, types, setSort }) {
             <ShopCarousel />
             <div className="rounded-2xl overflow-hidden shadow-lg w-full bg-white mt-6 px-5 py-4">
               <div className="mb-3">
-                <div className="flex justify-end place-items-center text-gray-700 text-sm relative">
-                  <svg
-                    className="w-6 h-6 mr-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
-                    />
-                  </svg>
+                <div className="flex justify-between place-items-center text-gray-600 text-sm relative">
+                  <div className="flex">
+                    <button
+                      onClick={() => setGrid(4)}
+                      className="p-1 relative flex justify-center items-center rounded-full hover:bg-gray-100 active:bg-gray-200 cursor-pointer duration-200"
+                    >
+                      <svg
+                        className="w-5 h-5 "
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => setGrid(2)}
+                      className="p-1 relative flex justify-center items-center rounded-full hover:bg-gray-100 active:bg-gray-200 cursor-pointer duration-200"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                   <button
                     onClick={() => setSortOpen(!sortOpen)}
                     className="flex place-items-center hover:bg-gray-100 py-1 px-2 rounded-md active:bg-gray-200"
                   >
+                    <svg
+                      className="w-5 h-5 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+                      />
+                    </svg>
                     Sort
                     <svg
                       className="w-4 h-4 ml-1"
@@ -79,6 +120,7 @@ function Layout({ children, categories, types, setSort }) {
                       />
                     </svg>
                   </button>
+
                   <div
                     className={`${
                       sortOpen ? "absolute" : "hidden"
@@ -122,7 +164,9 @@ function Layout({ children, categories, types, setSort }) {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-4 gap-y-6">
+              <div
+                className={`grid grid-cols-2 md:grid-cols-${grid} lg:grid-cols-${grid} gap-x-4 gap-y-6`}
+              >
                 {children}
               </div>
             </div>
