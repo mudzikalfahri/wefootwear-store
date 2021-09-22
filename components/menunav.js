@@ -12,7 +12,7 @@ function MenuNav({ handleOpen, isOpen }) {
       transition={{ duration: 0.2 }}
       className={`${
         !isOpen ? `hidden` : `flex`
-      } w-full h-screen absolute top-0 bg-gray-500 bg-opacity-30`}
+      } w-full h-screen absolute top-0 bg-gray-700 bg-opacity-30`}
     >
       <div className="text-center relative leading-loose flex place-items-center text-md text-cusblack w-52 h-screen bg-white">
         <button onClick={handleOpen} className=" absolute top-0 right-0 m-5">
