@@ -4,7 +4,6 @@ import CardSkeleton from "../../components/cardskeleton";
 import Layout from "../../components/layout";
 import ProductCard from "../../components/productcard";
 import { recentCategory } from "../../slices/categorySlice";
-import NotFound from "../404";
 import Head from "next/head";
 
 export async function getStaticProps({ params }) {
@@ -39,14 +38,11 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
 function Category({ data, dataItems, dataTypes }) {
-  if (!dataItems || !data) {
-    return <NotFound />;
-  }
   const [sort, setSort] = useState(0);
   const recent_category = useSelector(recentCategory);
   const data_items = dataItems
@@ -66,11 +62,6 @@ function Category({ data, dataItems, dataTypes }) {
       }
       return true;
     });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
 
   return (
     <>
@@ -78,24 +69,12 @@ function Category({ data, dataItems, dataTypes }) {
         <title>wefootwear | Shop</title>
       </Head>
       <Layout categories={data} setSort={setSort} types={dataTypes}>
-        {!loading ? (
-          data_items.length > 0 ? (
-            data_items.map((item) => (
-              <ProductCard key={item.slug} item={item} />
-            ))
-          ) : (
-            <p className="col-span-full mx-auto text-sm text-gray-400">
-              No item found
-            </p>
-          )
+        {dataItems.length > 0 ? (
+          data_items.map((item) => <ProductCard key={item.slug} item={item} />)
         ) : (
-          <>
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-          </>
+          <p className="col-span-full mx-auto my-10 text-sm text-gray-400">
+            No item found
+          </p>
         )}
       </Layout>
     </>
