@@ -40,7 +40,7 @@ export async function getStaticProps({ params }) {
   );
   const dataAlso = await resAlso.json();
 
-  if (!res.length) {
+  if (!data.length) {
     return {
       redirect: {
         destination: "/shop",
