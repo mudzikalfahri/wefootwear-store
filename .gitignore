@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-permission.json
 
 # testing
 /coverage
@@ -33,4 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-/permission.json
