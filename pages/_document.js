@@ -24,9 +24,9 @@ class MyDocument extends Document {
             name="msapplication-config"
             content="/static/icons/browserconfig.xml"
           />
-          <meta name="msapplication-TileColor" content="#fff" />
+          <meta name="msapplication-TileColor" content="#000" />
           <meta name="msapplication-tap-highlight" content="no" />
-          <meta name="theme-color" content="#000000" />
+          <meta name="theme-color" content="#fff" />
 
           <link rel="apple-touch-icon" href="/icon-192x192.png" />
           <link

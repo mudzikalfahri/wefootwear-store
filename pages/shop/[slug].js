@@ -69,7 +69,7 @@ function Category({ data, dataItems, dataTypes }) {
         <title>wefootwear | Shop</title>
       </Head>
       <Layout categories={data} setSort={setSort} types={dataTypes}>
-        {dataItems.length > 0 ? (
+        {data_items.length > 0 ? (
           data_items.map((item) => <ProductCard key={item.slug} item={item} />)
         ) : (
           <p className="col-span-full mx-auto my-10 text-sm text-gray-400">
