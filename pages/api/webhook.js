@@ -1,8 +1,20 @@
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
-const serviceAccount = require("../../permission.json");
-
+const serviceAccount = {
+  type: "service_account",
+  project_id: "wefootwear-68c74",
+  private_key_id: "c488eca553c6d0096e5872067aff467e1bb55b2b",
+  private_key: process.env.NEXT_PUBLIC_FIREBASE_SECRET,
+  client_email:
+    "firebase-adminsdk-g779b@wefootwear-68c74.iam.gserviceaccount.com",
+  client_id: "115524336642708944609",
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url:
+    "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g779b%40wefootwear-68c74.iam.gserviceaccount.com",
+};
 const app = !admin.apps.length
   ? admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
