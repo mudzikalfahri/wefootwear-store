@@ -15,6 +15,7 @@ const serviceAccount = {
   client_x509_cert_url:
     "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g779b%40wefootwear-68c74.iam.gserviceaccount.com",
 };
+
 const app = !admin.apps.length
   ? admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
