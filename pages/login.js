@@ -51,7 +51,7 @@ function Login() {
       setField({});
       console.log("success");
       e.target.reset();
-      router.replace("/shop");
+      router.push("/shop");
     }
     setLoading(false);
   };
