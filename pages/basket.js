@@ -9,10 +9,11 @@ import nookies from "nookies";
 import Head from "next/head";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import Router from "next/router";
+import { useRouter } from "next/dist/client/router";
 const stripePromise = loadStripe(process.env.publishableKey);
 
 function Basket() {
+  const router = useRouter();
   const items = useSelector(selectItems);
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useState({});
@@ -30,7 +31,7 @@ function Basket() {
   const createCheckoutSession = async () => {
     setLoading(true);
     if (!cookie) {
-      Router.push("/login");
+      router.push("/login");
       return;
     }
     const stripe = await stripePromise;
@@ -70,16 +71,17 @@ function Basket() {
                 <div className="rounded-xl bg-white px-5 pt-5 mt-5 shadow-lg overflow-hidden">
                   <p>Your Basket ({items.length})</p>
                   <div className="pt-5 pb-2">
-                    {items?.length > 0 ? (
+                    {items.length > 0 &&
                       items.map((item, idx) => (
                         <BasketProduct idx={idx} key={item.slug} item={item} />
-                      ))
-                    ) : (
-                      <div className="flex flex-col items-center text-gray-400 text-sm mb-10">
+                      ))}
+                    {items.length === 0 && (
+                      <div className="text-gray-400 text-sm mb-10">
                         <img
                           className="md:w-1/3 object-cover w-full"
                           src="https://i.ibb.co/hWZhd6F/empty-cart-4a7779da-Convert-Image.png"
                           alt=""
+                          className="mx-auto"
                         />
                         <p className="text-center">
                           Your basket is empty,
