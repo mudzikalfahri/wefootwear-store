@@ -9,15 +9,20 @@ import OrderCard from "../components/ordercard";
 
 export async function getServerSideProps(ctx) {
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-  const cookie = nookies.get(ctx);
-  if (!cookie.user) {
+  const cookie = nookies.get(ctx, "user").user;
+  let session = null;
+  if (cookie) {
+    session = JSON.parse(cookie);
+  }
+
+  if (!cookie) {
     return {
       redirect: {
         destination: "/login",
+        permanent: false,
       },
     };
   }
-  const session = JSON.parse(cookie.user);
 
   const stripeOrders = await db
     .collection("users")
