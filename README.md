@@ -17,6 +17,7 @@
 - [Strapi CMS](https://strapi.io/)
 - [MongoDB](https://www.mongodb.com/cloud/atlas)
 - [Stripe](https://stripe.com)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 - Vercel (deployment)
 
 **Some features**:
