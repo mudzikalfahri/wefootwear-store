@@ -8,7 +8,10 @@ import Link from "next/link";
 function BasketProduct({ item, idx }) {
   const dispatch = useDispatch();
   return (
-    <div className="product md:flex justify-between mb-6">
+    <div
+      className="product md:flex justify-between mb-6"
+      suppressHydrationWarning
+    >
       <Link href={"/product/" + item.slug}>
         <div className="image md:flex cursor-pointer">
           <motion.div
