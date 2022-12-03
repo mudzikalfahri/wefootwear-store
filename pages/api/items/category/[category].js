@@ -7,5 +7,5 @@ export default async (req, res) => {
     (item) => item.category.toLowerCase() === category.toLowerCase()
   );
 
-  res.status(200).json(item);
+  res.status(200).json(JSON.stringify(item));
 };

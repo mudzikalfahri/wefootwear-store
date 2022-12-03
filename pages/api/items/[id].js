@@ -5,5 +5,5 @@ export default async (req, res) => {
 
   const item = data.find((item) => item.slug === id);
 
-  res.status(200).json(item);
+  res.status(200).json(JSON.stringify(item));
 };
